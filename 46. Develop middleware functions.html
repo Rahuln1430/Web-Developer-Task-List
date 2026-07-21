@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Middleware Functions Documentation</title>
+
+<style>
+body{
+    font-family:Arial, sans-serif;
+    background:#f5f7fa;
+    margin:40px;
+    color:#333;
+}
+.container{
+    max-width:1000px;
+    margin:auto;
+    background:#fff;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 4px 12px rgba(0,0,0,.1);
+}
+h1{
+    color:#0d6efd;
+}
+.card{
+    margin:20px 0;
+}
+pre{
+    background:#1e1e1e;
+    color:#f8f8f2;
+    padding:15px;
+    border-radius:8px;
+    overflow-x:auto;
+}
+code{
+    font-family:Consolas, monospace;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<h1>Middleware Functions Overview</h1>
+
+<p>Middleware executes before route handlers. It can inspect, modify, or terminate requests and responses.</p>
+
+<div class="card">
+<h2>Logger Middleware</h2>
+<pre><code>
+app.use((req, res, next) => {
+    console.log(req.method, req.url);
+    next();
+});
+</code></pre>
+</div>
+
+<div class="card">
+<h2>JSON Body Parser</h2>
+<pre><code>
+app.use(express.json());
+</code></pre>
+</div>
+
+<div class="card">
+<h2>Authentication Middleware</h2>
+<pre><code>
+function authenticate(req, res, next) {
+    const token = req.headers.authorization;
+
+    if (!token) {
+        return res.status(401).json({
+            message: "Unauthorized"
+        });
+    }
+
+    next();
+}
+</code></pre>
+</div>
+
+<div class="card">
+<h2>Error Handling Middleware</h2>
+<pre><code>
+app.use((err, req, res, next) => {
+    res.status(500).json({
+        error: err.message
+    });
+});
+</code></pre>
+</div>
+
+<div class="card">
+<h2>Typical Request Flow</h2>
+
+<pre>
+Client Request
+      │
+      ▼
+Logger Middleware
+      │
+      ▼
+Authentication Middleware
+      │
+      ▼
+Validation Middleware
+      │
+      ▼
+Route Handler
+      │
+      ▼
+Response
+</pre>
+
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Checkout Page</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+    color:#333;
+}
+
+.container{
+    max-width:1200px;
+    margin:40px auto;
+    padding:20px;
+}
+
+h1{
+    text-align:center;
+    margin-bottom:35px;
+    color:#1e293b;
+}
+
+.checkout{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:30px;
+}
+
+/* Form */
+.form-card,
+.summary{
+    background:#fff;
+    padding:30px;
+    border-radius:14px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.section-title{
+    margin-bottom:20px;
+    color:#2563eb;
+}
+
+.row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.group{
+    margin-bottom:18px;
+}
+
+.group label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:600;
+}
+
+.group input,
+.group select{
+    width:100%;
+    padding:12px;
+    border:1px solid #cbd5e1;
+    border-radius:8px;
+    font-size:15px;
+    outline:none;
+}
+
+.group input:focus,
+.group select:focus{
+    border-color:#2563eb;
+}
+
+/* Payment */
+.payment{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    margin-top:15px;
+}
+
+.payment label{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+/* Summary */
+.summary h2{
+    margin-bottom:20px;
+}
+
+.item{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:15px;
+}
+
+.total{
+    border-top:1px solid #ddd;
+    padding-top:15px;
+    font-size:20px;
+    font-weight:bold;
+}
+
+button{
+    width:100%;
+    margin-top:25px;
+    padding:15px;
+    background:#2563eb;
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+/* Responsive */
+@media(max-width:768px){
+
+.checkout{
+    grid-template-columns:1fr;
+}
+
+.row{
+    grid-template-columns:1fr;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Checkout</h1>
+
+<div class="checkout">
+
+<!-- Billing Form -->
+<div class="form-card">
+
+<h2 class="section-title">Billing Details</h2>
+
+<form>
+
+<div class="row">
+
+<div class="group">
+<label>First Name</label>
+<input type="text" required>
+</div>
+
+<div class="group">
+<label>Last Name</label>
+<input type="text" required>
+</div>
+
+</div>
+
+<div class="group">
+<label>Email Address</label>
+<input type="email" required>
+</div>
+
+<div class="group">
+<label>Phone Number</label>
+<input type="tel">
+</div>
+
+<div class="group">
+<label>Street Address</label>
+<input type="text" required>
+</div>
+
+<div class="row">
+
+<div class="group">
+<label>City</label>
+<input type="text" required>
+</div>
+
+<div class="group">
+<label>Postal Code</label>
+<input type="text" required>
+</div>
+
+</div>
+
+<div class="group">
+<label>Country</label>
+<select>
+<option>India</option>
+<option>United States</option>
+<option>United Kingdom</option>
+<option>Canada</option>
+</select>
+</div>
+
+<h2 class="section-title">Payment Method</h2>
+
+<div class="payment">
+<label><input type="radio" name="pay" checked> Credit / Debit Card</label>
+<label><input type="radio" name="pay"> UPI</label>
+<label><input type="radio" name="pay"> Net Banking</label>
+<label><input type="radio" name="pay"> Cash on Delivery</label>
+</div>
+
+</form>
+
+</div>
+
+<!-- Order Summary -->
+<div class="summary">
+
+<h2>Order Summary</h2>
+
+<div class="item">
+<span>Wireless Headphones</span>
+<span>$89</span>
+</div>
+
+<div class="item">
+<span>Smart Watch</span>
+<span>$149</span>
+</div>
+
+<div class="item">
+<span>Shipping</span>
+<span>$15</span>
+</div>
+
+<div class="item">
+<span>Tax</span>
+<span>$20</span>
+</div>
+
+<div class="item total">
+<span>Total</span>
+<span>$273</span>
+</div>
+
+<button>Place Order</button>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

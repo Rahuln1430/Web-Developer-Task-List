@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive E-Commerce Website</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    color:#333;
+}
+
+/* Header */
+header{
+    background:#1e3a8a;
+    color:#fff;
+    padding:18px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+}
+
+nav{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+nav a{
+    color:#fff;
+    text-decoration:none;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#fbbf24;
+}
+
+.search-box input{
+    padding:10px 15px;
+    border:none;
+    border-radius:6px;
+    width:220px;
+}
+
+/* Hero */
+.hero{
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    color:#fff;
+    text-align:center;
+    padding:80px 20px;
+}
+
+.hero h1{
+    font-size:48px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    max-width:650px;
+    margin:auto;
+}
+
+.hero .btn{
+    display:inline-block;
+    margin-top:25px;
+    background:#fff;
+    color:#2563eb;
+    text-decoration:none;
+    padding:14px 28px;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+/* Products */
+.products{
+    max-width:1200px;
+    margin:60px auto;
+    padding:0 20px;
+}
+
+.products h2{
+    text-align:center;
+    margin-bottom:40px;
+    color:#1e293b;
+}
+
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.product{
+    background:#fff;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 6px 18px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.product:hover{
+    transform:translateY(-6px);
+}
+
+.product img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.product-info{
+    padding:20px;
+}
+
+.product-info h3{
+    margin-bottom:10px;
+}
+
+.price{
+    color:#2563eb;
+    font-size:22px;
+    font-weight:bold;
+    margin:10px 0;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    background:#2563eb;
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+/* Footer */
+footer{
+    background:#111827;
+    color:#fff;
+    text-align:center;
+    padding:20px;
+    margin-top:60px;
+}
+
+@media(max-width:768px){
+
+header{
+    flex-direction:column;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:36px;
+}
+
+.search-box input{
+    width:100%;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">ShopEase</div>
+
+<nav>
+<a href="#">Home</a>
+<a href="#">Shop</a>
+<a href="#">Categories</a>
+<a href="#">About</a>
+<a href="#">Contact</a>
+</nav>
+
+<div class="search-box">
+<input type="search" placeholder="Search products...">
+</div>
+
+</header>
+
+<section class="hero">
+<h1>Discover Amazing Products</h1>
+<p>
+Shop the latest fashion, electronics, and accessories with fast delivery and secure payments.
+</p>
+<a href="#" class="btn">Shop Now</a>
+</section>
+
+<section class="products">
+
+<h2>Featured Products</h2>
+
+<div class="product-grid">
+
+<div class="product">
+<img src="https://picsum.photos/400/300?1" alt="Wireless Headphones">
+<div class="product-info">
+<h3>Wireless Headphones</h3>
+<p>Premium sound quality with noise cancellation.</p>
+<div class="price">$89</div>
+<button>Add to Cart</button>
+</div>
+</div>
+
+<div class="product">
+<img src="https://picsum.photos/400/300?2" alt="Smart Watch">
+<div class="product-info">
+<h3>Smart Watch</h3>
+<p>Track fitness, health, and notifications.</p>
+<div class="price">$149</div>
+<button>Add to Cart</button>
+</div>
+</div>
+
+<div class="product">
+<img src="https://picsum.photos/400/300?3" alt="Running Shoes">
+<div class="product-info">
+<h3>Running Shoes</h3>
+<p>Comfortable lightweight sports shoes.</p>
+<div class="price">$69</div>
+<button>Add to Cart</button>
+</div>
+</div>
+
+<div class="product">
+<img src="https://picsum.photos/400/300?4" alt="Laptop Backpack">
+<div class="product-info">
+<h3>Laptop Backpack</h3>
+<p>Stylish and water-resistant travel backpack.</p>
+<div class="price">$49</div>
+<button>Add to Cart</button>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+<p>&copy; 2026 ShopEase. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

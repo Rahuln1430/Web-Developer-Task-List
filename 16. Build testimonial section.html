@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Testimonial Section</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f4f7fb;
+}
+
+.testimonials{
+    padding:80px 20px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.section-title h2{
+    font-size:38px;
+    color:#1e293b;
+    margin-bottom:10px;
+}
+
+.section-title p{
+    color:#64748b;
+}
+
+.testimonial-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:#fff;
+    padding:30px;
+    border-radius:16px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.stars{
+    color:#fbbf24;
+    font-size:20px;
+    margin-bottom:18px;
+}
+
+.message{
+    color:#475569;
+    line-height:1.8;
+    margin-bottom:25px;
+}
+
+.user{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.avatar{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:#2563eb;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.user-info h4{
+    color:#1e293b;
+    margin-bottom:5px;
+}
+
+.user-info p{
+    color:#64748b;
+    font-size:14px;
+}
+
+@media(max-width:768px){
+
+.section-title h2{
+    font-size:30px;
+}
+
+.testimonials{
+    padding:60px 15px;
+}
+
+}
+</style>
+
+</head>
+<body>
+
+<section class="testimonials">
+
+<div class="container">
+
+<div class="section-title">
+<h2>What Our Clients Say</h2>
+<p>Trusted by businesses around the world.</p>
+</div>
+
+<div class="testimonial-grid">
+
+<div class="card">
+<div class="stars">★★★★★</div>
+
+<p class="message">
+"The team delivered a modern, responsive website that exceeded our expectations.
+Excellent communication and outstanding quality."
+</p>
+
+<div class="user">
+<div class="avatar">J</div>
+
+<div class="user-info">
+<h4>John Smith</h4>
+<p>CEO, Tech Solutions</p>
+</div>
+</div>
+
+</div>
+
+<div class="card">
+<div class="stars">★★★★★</div>
+
+<p class="message">
+"Professional service from start to finish. Our website performance and
+user experience improved significantly after the redesign."
+</p>
+
+<div class="user">
+<div class="avatar">E</div>
+
+<div class="user-info">
+<h4>Emma Wilson</h4>
+<p>Marketing Manager</p>
+</div>
+</div>
+
+</div>
+
+<div class="card">
+<div class="stars">★★★★★</div>
+
+<p class="message">
+"Highly recommended! The design is clean, responsive, and perfectly suited
+for our business. We couldn't be happier."
+</p>
+
+<div class="user">
+<div class="avatar">M</div>
+
+<div class="user-info">
+<h4>Michael Lee</h4>
+<p>Founder, Startup Hub</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</body>
+</html>

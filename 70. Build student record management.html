@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Record Management System</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f7fc;
+}
+
+.container{
+    max-width:1200px;
+    margin:40px auto;
+    padding:20px;
+}
+
+.header{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.header h1{
+    color:#2563eb;
+}
+
+.card{
+    background:#fff;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 6px 15px rgba(0,0,0,.08);
+    margin-bottom:25px;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+}
+
+input,
+select{
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    width:100%;
+}
+
+button{
+    padding:12px 18px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    color:#fff;
+    font-weight:bold;
+}
+
+.add-btn{
+    background:#2563eb;
+}
+
+.reset-btn{
+    background:#6b7280;
+}
+
+.search-box{
+    margin:20px 0;
+}
+
+.search-box input{
+    width:100%;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+th,
+td{
+    padding:12px;
+    border-bottom:1px solid #ddd;
+    text-align:left;
+}
+
+th{
+    background:#2563eb;
+    color:#fff;
+}
+
+.action-btn{
+    padding:6px 12px;
+    margin-right:5px;
+}
+
+.edit{
+    background:#f59e0b;
+}
+
+.delete{
+    background:#dc2626;
+}
+
+@media(max-width:768px){
+
+table{
+    display:block;
+    overflow-x:auto;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+<h1><i class="fas fa-user-graduate"></i> Student Record Management</h1>
+</div>
+
+<div class="card">
+
+<div class="form-grid">
+
+<input type="text" id="name" placeholder="Student Name">
+
+<input type="text" id="roll" placeholder="Roll Number">
+
+<input type="text" id="course" placeholder="Course">
+
+<select id="grade">
+<option>A</option>
+<option>B</option>
+<option>C</option>
+<option>D</option>
+<option>F</option>
+</select>
+
+</div>
+
+<br>
+
+<button class="add-btn" onclick="addStudent()">
+<i class="fas fa-plus"></i> Add Student
+</button>
+
+<button class="reset-btn" onclick="clearForm()">
+Reset
+</button>
+
+</div>
+
+<div class="card">
+
+<div class="search-box">
+
+<input
+type="text"
+id="search"
+placeholder="Search student..."
+onkeyup="searchStudent()">
+
+</div>
+
+<table id="studentTable">
+
+<thead>
+
+<tr>
+<th>Name</th>
+<th>Roll No</th>
+<th>Course</th>
+<th>Grade</th>
+<th>Actions</th>
+</tr>
+
+</thead>
+
+<tbody></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<script>
+
+function addStudent(){
+
+const name=document.getElementById("name").value.trim();
+const roll=document.getElementById("roll").value.trim();
+const course=document.getElementById("course").value.trim();
+const grade=document.getElementById("grade").value;
+
+if(name===""||roll===""||course===""){
+alert("Please fill all fields.");
+return;
+}
+
+const table=document.querySelector("#studentTable tbody");
+
+const row=table.insertRow();
+
+row.innerHTML=`
+<td>${name}</td>
+<td>${roll}</td>
+<td>${course}</td>
+<td>${grade}</td>
+<td>
+<button class="action-btn edit"
+onclick="editRow(this)">
+Edit
+</button>
+
+<button class="action-btn delete"
+onclick="deleteRow(this)">
+Delete
+</button>
+</td>
+`;
+
+clearForm();
+
+}
+
+function deleteRow(btn){
+
+btn.parentElement.parentElement.remove();
+
+}
+
+function editRow(btn){
+
+const row=btn.parentElement.parentElement;
+
+document.getElementById("name").value=row.cells[0].innerText;
+document.getElementById("roll").value=row.cells[1].innerText;
+document.getElementById("course").value=row.cells[2].innerText;
+document.getElementById("grade").value=row.cells[3].innerText;
+
+row.remove();
+
+}
+
+function clearForm(){
+
+document.getElementById("name").value="";
+document.getElementById("roll").value="";
+document.getElementById("course").value="";
+document.getElementById("grade").selectedIndex=0;
+
+}
+
+function searchStudent(){
+
+const value=document.getElementById("search")
+.value.toLowerCase();
+
+const rows=document.querySelectorAll("#studentTable tbody tr");
+
+rows.forEach(row=>{
+
+row.style.display=row.innerText
+.toLowerCase()
+.includes(value)
+? ""
+: "none";
+
+});
+
+}
+
+</script>
+
+</body>
+</html>

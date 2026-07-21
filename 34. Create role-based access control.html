@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Role Based Access Control</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+background:#f4f7fb;
+padding:30px;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+background:#fff;
+padding:30px;
+border-radius:12px;
+box-shadow:0 10px 25px rgba(0,0,0,.1);
+}
+
+h1{
+text-align:center;
+margin-bottom:25px;
+color:#333;
+}
+
+.top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+margin-bottom:25px;
+gap:15px;
+}
+
+select{
+padding:12px;
+font-size:16px;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+.card{
+padding:20px;
+background:#fafafa;
+border-radius:10px;
+margin-bottom:20px;
+}
+
+.card h2{
+margin-bottom:15px;
+}
+
+.permissions{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+}
+
+.permission{
+padding:15px;
+border-radius:10px;
+background:white;
+border-left:5px solid #3498db;
+box-shadow:0 3px 8px rgba(0,0,0,.08);
+}
+
+.permission.denied{
+border-left-color:#e74c3c;
+opacity:.5;
+}
+
+.permission.allowed{
+border-left-color:#2ecc71;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+th,td{
+padding:15px;
+text-align:center;
+border:1px solid #ddd;
+}
+
+th{
+background:#3498db;
+color:white;
+}
+
+.allowed-text{
+color:green;
+font-weight:bold;
+}
+
+.denied-text{
+color:red;
+font-weight:bold;
+}
+
+button{
+padding:10px 20px;
+border:none;
+border-radius:8px;
+background:#3498db;
+color:white;
+cursor:pointer;
+margin-top:20px;
+}
+
+button:hover{
+background:#2874a6;
+}
+
+@media(max-width:768px){
+
+.top{
+flex-direction:column;
+align-items:flex-start;
+}
+
+table{
+display:block;
+overflow:auto;
+}
+
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>Role-Based Access Control</h1>
+
+<div class="top">
+
+<div>
+<label><strong>Select Role</strong></label><br><br>
+
+<select id="roleSelect">
+
+<option value="Admin">Admin</option>
+
+<option value="Manager">Manager</option>
+
+<option value="User">User</option>
+
+</select>
+
+</div>
+
+<div>
+<h2 id="roleTitle">Admin Dashboard</h2>
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>Available Permissions</h2>
+
+<div class="permissions" id="permissionBox"></div>
+
+</div>
+
+<div class="card">
+
+<h2>Permission Matrix</h2>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Permission</th>
+
+<th>Admin</th>
+
+<th>Manager</th>
+
+<th>User</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>Dashboard</td>
+
+<td class="allowed-text">✔</td>
+
+<td class="allowed-text">✔</td>
+
+<td class="allowed-text">✔</td>
+
+</tr>
+
+<tr>
+
+<td>Manage Users</td>
+
+<td class="allowed-text">✔</td>
+
+<td class="denied-text">✖</td>
+
+<td class="denied-text">✖</td>
+
+</tr>
+
+<tr>
+
+<td>Create Reports</td>
+
+<td class="allowed-text">✔</td>
+
+<td class="allowed-text">✔</td>
+
+<td class="denied-text">✖</td>
+
+</tr>
+
+<tr>
+
+<td>Edit Records</td>
+
+<td class="allowed-text">✔</td>
+
+<td class="allowed-text">✔</td>
+
+<td class="denied-text">✖</td>
+
+</tr>
+
+<tr>
+
+<td>Delete Records</td>
+
+<td class="allowed-text">✔</td>
+
+<td class="denied-text">✖</td>
+
+<td class="denied-text">✖</td>
+
+</tr>
+
+<tr>
+
+<td>View Reports</td>
+
+<td class="allowed-text">✔</td>
+
+<td class="allowed-text">✔</td>
+
+<td class="allowed-text">✔</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+<button onclick="showPermissions()">
+Refresh Permissions
+</button>
+
+</div>
+
+<script>
+
+const roles={
+
+Admin:[
+"Dashboard",
+"Manage Users",
+"Create Reports",
+"Edit Records",
+"Delete Records",
+"View Reports"
+],
+
+Manager:[
+"Dashboard",
+"Create Reports",
+"Edit Records",
+"View Reports"
+],
+
+User:[
+"Dashboard",
+"View Reports"
+]
+
+};
+
+const allPermissions=[
+"Dashboard",
+"Manage Users",
+"Create Reports",
+"Edit Records",
+"Delete Records",
+"View Reports"
+];
+
+function showPermissions(){
+
+const role=document.getElementById("roleSelect").value;
+
+document.getElementById("roleTitle").innerHTML=role+" Dashboard";
+
+const container=document.getElementById("permissionBox");
+
+container.innerHTML="";
+
+allPermissions.forEach(permission=>{
+
+const div=document.createElement("div");
+
+if(roles[role].includes(permission)){
+
+div.className="permission allowed";
+
+div.innerHTML=
+"<h3>"+permission+"</h3><br><strong style='color:green;'>Access Granted</strong>";
+
+}else{
+
+div.className="permission denied";
+
+div.innerHTML=
+"<h3>"+permission+"</h3><br><strong style='color:red;'>Access Denied</strong>";
+
+}
+
+container.appendChild(div);
+
+});
+
+}
+
+showPermissions();
+
+document.getElementById("roleSelect").addEventListener("change",showPermissions);
+
+</script>
+
+</body>
+</html>

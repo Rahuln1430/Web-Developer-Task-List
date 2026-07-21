@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Firebase Integration Demo</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f7fc;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.container{
+    width:420px;
+    background:#fff;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,.1);
+}
+
+h2{
+    text-align:center;
+    color:#2563eb;
+    margin-bottom:25px;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    color:#fff;
+    font-size:16px;
+}
+
+.save{
+    background:#2563eb;
+}
+
+.load{
+    background:#16a34a;
+}
+
+.delete{
+    background:#dc2626;
+}
+
+.result{
+    margin-top:20px;
+    padding:12px;
+    background:#eef2ff;
+    border-radius:8px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2><i class="fas fa-fire"></i> Firebase Integration</h2>
+
+<input
+type="text"
+id="name"
+placeholder="Enter Name">
+
+<input
+type="email"
+id="email"
+placeholder="Enter Email">
+
+<button class="save" onclick="saveData()">
+Save to Firebase
+</button>
+
+<button class="load" onclick="loadData()">
+Load Data
+</button>
+
+<button class="delete" onclick="deleteData()">
+Delete Data
+</button>
+
+<div class="result" id="output">
+No data loaded.
+</div>
+
+</div>
+
+<!-- Firebase SDK -->
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getFirestore,
+doc,
+setDoc,
+getDoc,
+deleteDoc
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+/* Replace with your Firebase project configuration */
+
+const firebaseConfig={
+
+apiKey:"YOUR_API_KEY",
+
+authDomain:"YOUR_PROJECT.firebaseapp.com",
+
+projectId:"YOUR_PROJECT_ID",
+
+storageBucket:"YOUR_PROJECT.appspot.com",
+
+messagingSenderId:"YOUR_SENDER_ID",
+
+appId:"YOUR_APP_ID"
+
+};
+
+const app=initializeApp(firebaseConfig);
+
+const db=getFirestore(app);
+
+window.saveData=async function(){
+
+const name=document.getElementById("name").value;
+
+const email=document.getElementById("email").value;
+
+if(name===""||email===""){
+
+alert("Fill all fields");
+
+return;
+
+}
+
+await setDoc(doc(db,"users","user1"),{
+
+name:name,
+
+email:email
+
+});
+
+alert("Data saved successfully!");
+
+};
+
+window.loadData=async function(){
+
+const docRef=doc(db,"users","user1");
+
+const docSnap=await getDoc(docRef);
+
+if(docSnap.exists()){
+
+const data=docSnap.data();
+
+document.getElementById("output").innerHTML=
+`
+<b>Name:</b> ${data.name}<br>
+<b>Email:</b> ${data.email}
+`;
+
+}else{
+
+document.getElementById("output").innerHTML=
+"No data found.";
+
+}
+
+};
+
+window.deleteData=async function(){
+
+await deleteDoc(doc(db,"users","user1"));
+
+document.getElementById("output").innerHTML=
+"Data deleted.";
+
+};
+
+</script>
+
+</body>
+</html>

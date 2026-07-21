@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF Export</title>
+
+<!-- jsPDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    padding:40px;
+}
+
+.container{
+    max-width:800px;
+    margin:auto;
+}
+
+.card{
+    background:#fff;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,.1);
+}
+
+h1{
+    color:#2563eb;
+    margin-bottom:20px;
+}
+
+.form-group{
+    margin-bottom:18px;
+}
+
+label{
+    display:block;
+    margin-bottom:6px;
+    font-weight:bold;
+}
+
+input,
+textarea{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+textarea{
+    resize:vertical;
+    min-height:120px;
+}
+
+button{
+    padding:12px 20px;
+    background:#2563eb;
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+.preview{
+    margin-top:30px;
+    padding:20px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    background:#fafafa;
+}
+
+.preview h2{
+    color:#333;
+    margin-bottom:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<h1>PDF Export Demo</h1>
+
+<div class="form-group">
+<label>Report Title</label>
+<input type="text" id="title" placeholder="Enter report title">
+</div>
+
+<div class="form-group">
+<label>Author</label>
+<input type="text" id="author" placeholder="Enter author">
+</div>
+
+<div class="form-group">
+<label>Description</label>
+<textarea id="description"
+placeholder="Write your report..."></textarea>
+</div>
+
+<button onclick="downloadPDF()">
+Export PDF
+</button>
+
+<div class="preview">
+
+<h2>Preview</h2>
+
+<p><strong>Title:</strong>
+<span id="pTitle">-</span></p>
+
+<p><strong>Author:</strong>
+<span id="pAuthor">-</span></p>
+
+<p style="margin-top:10px;">
+<span id="pDescription">
+No report created.
+</span>
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+const title=document.getElementById("title");
+const author=document.getElementById("author");
+const description=document.getElementById("description");
+
+function updatePreview(){
+
+document.getElementById("pTitle").textContent=
+title.value||"-";
+
+document.getElementById("pAuthor").textContent=
+author.value||"-";
+
+document.getElementById("pDescription").textContent=
+description.value||"No report created.";
+
+}
+
+title.addEventListener("input",updatePreview);
+author.addEventListener("input",updatePreview);
+description.addEventListener("input",updatePreview);
+
+async function downloadPDF(){
+
+const { jsPDF } = window.jspdf;
+
+const pdf=new jsPDF();
+
+pdf.setFontSize(22);
+pdf.text("Report",20,20);
+
+pdf.setFontSize(14);
+pdf.text("Title: "+title.value,20,40);
+
+pdf.text("Author: "+author.value,20,55);
+
+pdf.text("Description:",20,75);
+
+const lines=pdf.splitTextToSize(description.value,170);
+
+pdf.text(lines,20,90);
+
+pdf.save("report.pdf");
+
+}
+
+</script>
+
+</body>
+</html>

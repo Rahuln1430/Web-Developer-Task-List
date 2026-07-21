@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cloud Database Integration</title>
+
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+
+body{
+
+    background:#f1f5f9;
+    color:#333;
+
+}
+
+
+/* Header */
+
+header{
+
+    background:#0f172a;
+    color:white;
+    padding:30px;
+    text-align:center;
+
+}
+
+
+/* Container */
+
+.container{
+
+    width:90%;
+    max-width:1100px;
+    margin:40px auto;
+
+}
+
+
+/* Database Cards */
+
+.database-grid{
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+
+}
+
+
+.card{
+
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+
+}
+
+
+.card h2{
+
+    color:#2563eb;
+    margin-bottom:15px;
+
+}
+
+
+.status{
+
+    display:inline-block;
+    margin-top:15px;
+    padding:7px 15px;
+    border-radius:20px;
+    background:#dcfce7;
+    color:#166534;
+    font-weight:bold;
+
+}
+
+
+/* Code */
+
+.code{
+
+    margin-top:30px;
+    background:#1e293b;
+    color:#00ff88;
+    padding:20px;
+    border-radius:10px;
+    overflow:auto;
+
+}
+
+
+/* Buttons */
+
+button{
+
+    margin-top:20px;
+    background:#2563eb;
+    color:white;
+    padding:12px 25px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+
+}
+
+
+button:hover{
+
+    background:#1d4ed8;
+
+}
+
+
+#message{
+
+    margin-top:20px;
+    font-weight:bold;
+
+}
+
+
+
+/* Responsive */
+
+@media(max-width:800px){
+
+.database-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+
+<header>
+
+<h1>☁️ Cloud Database Integration</h1>
+
+<p>Connect, Manage and Monitor Cloud Databases</p>
+
+</header>
+
+
+
+
+<div class="container">
+
+
+
+<div class="database-grid">
+
+
+
+<div class="card">
+
+<h2>🟦 MySQL Cloud</h2>
+
+<p>
+Managed relational database service.
+</p>
+
+<span class="status">
+Connected
+</span>
+
+</div>
+
+
+
+
+<div class="card">
+
+<h2>🍃 MongoDB Cloud</h2>
+
+<p>
+Cloud NoSQL document database.
+</p>
+
+<span class="status">
+Connected
+</span>
+
+</div>
+
+
+
+
+<div class="card">
+
+<h2>🔥 Firebase</h2>
+
+<p>
+Realtime cloud database integration.
+</p>
+
+<span class="status">
+Connected
+</span>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<div class="code">
+
+
+<h2>Database Connection Example</h2>
+
+
+<pre>
+
+const database = {
+
+host: "cloud-server",
+
+database: "application_db",
+
+user: "admin",
+
+connection: "secure"
+
+};
+
+
+connectDatabase(database);
+
+
+</pre>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+
+<h2>Database Operations</h2>
+
+
+<ul>
+
+<li>✔ Create Records</li>
+
+<li>✔ Read Data</li>
+
+<li>✔ Update Records</li>
+
+<li>✔ Delete Data</li>
+
+<li>✔ Backup & Recovery</li>
+
+<li>✔ Secure Authentication</li>
+
+</ul>
+
+
+
+<button onclick="connectDB()">
+
+Test Connection
+
+</button>
+
+
+<p id="message"></p>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<script>
+
+
+function connectDB(){
+
+document.getElementById("message").innerHTML =
+"✅ Cloud Database Connected Successfully!";
+
+}
+
+
+</script>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRUD Operations UI</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f4f4;
+    padding:40px;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    background:#fff;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+h1{
+    text-align:center;
+    margin-bottom:20px;
+    color:#007BFF;
+}
+
+form{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+    margin-bottom:25px;
+}
+
+input{
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    font-size:16px;
+}
+
+button{
+    padding:12px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    color:white;
+    font-size:15px;
+}
+
+.create{background:#28a745;}
+.update{background:#ffc107;color:#000;}
+.reset{background:#6c757d;}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+table th,
+table td{
+    border:1px solid #ddd;
+    padding:12px;
+    text-align:center;
+}
+
+table th{
+    background:#007BFF;
+    color:white;
+}
+
+.action-btn{
+    padding:8px 12px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    color:white;
+}
+
+.edit{
+    background:#17a2b8;
+}
+
+.delete{
+    background:#dc3545;
+}
+
+@media(max-width:700px){
+    form{
+        grid-template-columns:1fr;
+    }
+
+    table{
+        display:block;
+        overflow-x:auto;
+    }
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>CRUD Operations</h1>
+
+<form id="crudForm">
+<input type="hidden" id="editIndex">
+
+<input type="text" id="name" placeholder="Enter Name" required>
+
+<input type="email" id="email" placeholder="Enter Email" required>
+
+<button type="submit" class="create">Save</button>
+
+<button type="reset" class="reset">Clear</button>
+
+</form>
+
+<table>
+
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Email</th>
+<th>Actions</th>
+</tr>
+</thead>
+
+<tbody id="tableBody">
+
+</tbody>
+
+</table>
+
+</div>
+
+<script>
+
+let users=[];
+
+const form=document.getElementById("crudForm");
+const table=document.getElementById("tableBody");
+
+form.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+const name=document.getElementById("name").value;
+const email=document.getElementById("email").value;
+const editIndex=document.getElementById("editIndex").value;
+
+if(editIndex===""){
+
+users.push({name,email});
+
+}else{
+
+users[editIndex]={name,email};
+
+document.querySelector(".create").textContent="Save";
+
+document.getElementById("editIndex").value="";
+
+}
+
+renderTable();
+
+form.reset();
+
+});
+
+function renderTable(){
+
+table.innerHTML="";
+
+users.forEach((user,index)=>{
+
+table.innerHTML+=`
+<tr>
+<td>${index+1}</td>
+<td>${user.name}</td>
+<td>${user.email}</td>
+<td>
+
+<button class="action-btn edit" onclick="editUser(${index})">
+Edit
+</button>
+
+<button class="action-btn delete" onclick="deleteUser(${index})">
+Delete
+</button>
+
+</td>
+</tr>
+`;
+
+});
+
+}
+
+function editUser(index){
+
+document.getElementById("name").value=users[index].name;
+
+document.getElementById("email").value=users[index].email;
+
+document.getElementById("editIndex").value=index;
+
+document.querySelector(".create").textContent="Update";
+
+}
+
+function deleteUser(index){
+
+if(confirm("Delete this record?")){
+
+users.splice(index,1);
+
+renderTable();
+
+}
+
+}
+
+</script>
+
+</body>
+</html>

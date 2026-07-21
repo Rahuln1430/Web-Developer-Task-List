@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Report Generation System</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    padding:30px;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+}
+
+.header{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.header h1{
+    color:#2563eb;
+}
+
+.report-form{
+    background:#fff;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    margin-bottom:25px;
+}
+
+.row{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+}
+
+.form-group{
+    margin-bottom:15px;
+}
+
+label{
+    display:block;
+    margin-bottom:6px;
+    font-weight:bold;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:6px;
+}
+
+textarea{
+    resize:vertical;
+}
+
+.buttons{
+    margin-top:20px;
+}
+
+button{
+    padding:12px 20px;
+    border:none;
+    border-radius:6px;
+    background:#2563eb;
+    color:#fff;
+    cursor:pointer;
+    margin-right:10px;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+.report-preview{
+    background:#fff;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.report-preview h2{
+    color:#2563eb;
+    margin-bottom:20px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+table th,
+table td{
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:left;
+}
+
+table th{
+    background:#2563eb;
+    color:#fff;
+}
+
+@media(max-width:768px){
+    .buttons button{
+        width:100%;
+        margin-bottom:10px;
+    }
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<div class="header">
+    <h1>Report Generation System</h1>
+    <p>Create and print reports instantly.</p>
+</div>
+
+<div class="report-form">
+
+<div class="row">
+
+<div class="form-group">
+<label>Report Title</label>
+<input type="text" id="title" placeholder="Monthly Sales Report">
+</div>
+
+<div class="form-group">
+<label>Report Type</label>
+<select id="type">
+<option>Sales</option>
+<option>Employee</option>
+<option>Inventory</option>
+<option>Finance</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Date</label>
+<input type="date" id="date">
+</div>
+
+</div>
+
+<div class="form-group">
+<label>Description</label>
+<textarea id="description" rows="4"
+placeholder="Enter report description..."></textarea>
+</div>
+
+<div class="buttons">
+<button onclick="generateReport()">Generate Report</button>
+<button onclick="window.print()">Print Report</button>
+</div>
+
+</div>
+
+<div class="report-preview" id="report">
+
+<h2>Generated Report</h2>
+
+<p><strong>Title:</strong> <span id="rTitle">-</span></p>
+
+<p><strong>Type:</strong> <span id="rType">-</span></p>
+
+<p><strong>Date:</strong> <span id="rDate">-</span></p>
+
+<p><strong>Description:</strong></p>
+
+<p id="rDescription">No report generated.</p>
+
+<h3 style="margin-top:20px;">Sample Data</h3>
+
+<table>
+
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Status</th>
+<th>Amount</th>
+</tr>
+
+<tr>
+<td>1001</td>
+<td>Rahul</td>
+<td>Completed</td>
+<td>$500</td>
+</tr>
+
+<tr>
+<td>1002</td>
+<td>John</td>
+<td>Pending</td>
+<td>$320</td>
+</tr>
+
+<tr>
+<td>1003</td>
+<td>Emma</td>
+<td>Completed</td>
+<td>$860</td>
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+<script>
+
+function generateReport(){
+
+document.getElementById("rTitle").innerHTML =
+document.getElementById("title").value || "Untitled Report";
+
+document.getElementById("rType").innerHTML =
+document.getElementById("type").value;
+
+document.getElementById("rDate").innerHTML =
+document.getElementById("date").value || "-";
+
+document.getElementById("rDescription").innerHTML =
+document.getElementById("description").value || "No description provided.";
+
+alert("Report generated successfully!");
+
+}
+
+</script>
+
+</body>
+</html>

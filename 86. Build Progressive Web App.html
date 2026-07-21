@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Progressive Web App</title>
+
+<link rel="manifest" href="manifest.json">
+
+<meta name="theme-color" content="#2563eb">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f1f5f9;
+    color:#333;
+}
+
+
+/* Header */
+
+header{
+    background:#2563eb;
+    color:white;
+    padding:30px;
+    text-align:center;
+}
+
+header h1{
+    font-size:32px;
+}
+
+
+/* App Container */
+
+.container{
+    max-width:1000px;
+    width:90%;
+    margin:40px auto;
+}
+
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    margin-bottom:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+
+.card h2{
+    color:#2563eb;
+    margin-bottom:10px;
+}
+
+
+button{
+
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:8px;
+    cursor:pointer;
+    margin-top:15px;
+
+}
+
+
+button:hover{
+    background:#1d4ed8;
+}
+
+
+.features{
+
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+
+}
+
+
+.feature{
+
+background:white;
+padding:20px;
+border-radius:10px;
+text-align:center;
+
+}
+
+
+footer{
+
+background:#111827;
+color:white;
+text-align:center;
+padding:20px;
+
+}
+
+
+@media(max-width:700px){
+
+.features{
+
+grid-template-columns:1fr;
+
+}
+
+header h1{
+
+font-size:24px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<h1>📱 Progressive Web App</h1>
+
+<p>Fast • Reliable • Installable</p>
+
+</header>
+
+
+
+<div class="container">
+
+
+<div class="card">
+
+<h2>Welcome to PWA</h2>
+
+<p>
+This application works like a native mobile app
+with offline support and installation features.
+</p>
+
+
+<button id="installBtn" hidden>
+Install App
+</button>
+
+
+</div>
+
+
+
+<div class="features">
+
+
+<div class="feature">
+
+<h3>⚡ Fast</h3>
+
+<p>
+Loads quickly using service workers.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<h3>📡 Offline</h3>
+
+<p>
+Works even without internet connection.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<h3>📲 Install</h3>
+
+<p>
+Add app directly to your device.
+</p>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+<footer>
+
+PWA Demo Application © 2026
+
+</footer>
+
+
+
+<script>
+
+
+let installButton = document.getElementById("installBtn");
+
+let installPrompt;
+
+
+window.addEventListener(
+"beforeinstallprompt",
+(event)=>{
+
+event.preventDefault();
+
+installPrompt = event;
+
+installButton.hidden=false;
+
+});
+
+
+installButton.addEventListener(
+"click",
+async()=>{
+
+if(installPrompt){
+
+installPrompt.prompt();
+
+let result = await installPrompt.userChoice;
+
+console.log(result);
+
+installPrompt=null;
+
+}
+
+});
+
+
+
+// Register Service Worker
+
+if("serviceWorker" in navigator){
+
+window.addEventListener(
+"load",
+()=>{
+
+navigator.serviceWorker.register(
+"service-worker.js"
+)
+.then(()=>{
+console.log("Service Worker Registered");
+});
+
+});
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>

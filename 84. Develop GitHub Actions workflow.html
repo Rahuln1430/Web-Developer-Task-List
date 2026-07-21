@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GitHub Actions Workflow</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+    color:#333;
+}
+
+header{
+    background:#24292f;
+    color:white;
+    padding:30px;
+    text-align:center;
+}
+
+.container{
+    width:90%;
+    max-width:1000px;
+    margin:40px auto;
+}
+
+.workflow{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.icon{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.status{
+    margin-top:15px;
+    padding:8px;
+    border-radius:20px;
+    background:#d4edda;
+    color:#155724;
+    font-weight:bold;
+}
+
+.code{
+    margin-top:30px;
+    background:#1e1e1e;
+    color:#00ff88;
+    padding:20px;
+    border-radius:10px;
+    overflow:auto;
+}
+
+button{
+    margin-top:25px;
+    background:#238636;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1a6f2c;
+}
+
+#output{
+    text-align:center;
+    margin-top:20px;
+    font-size:18px;
+    font-weight:bold;
+}
+
+footer{
+    text-align:center;
+    background:#24292f;
+    color:white;
+    padding:15px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h1>⚙️ GitHub Actions Workflow</h1>
+<p>Automated Build, Test and Deployment Pipeline</p>
+</header>
+
+
+<div class="container">
+
+<div class="workflow">
+
+<div class="card">
+<div class="icon">📂</div>
+<h2>Checkout</h2>
+<p>Download source code from repository</p>
+<div class="status">Completed</div>
+</div>
+
+
+<div class="card">
+<div class="icon">🔧</div>
+<h2>Build</h2>
+<p>Install dependencies and compile project</p>
+<div class="status">Completed</div>
+</div>
+
+
+<div class="card">
+<div class="icon">🧪</div>
+<h2>Testing</h2>
+<p>Run automated test cases</p>
+<div class="status">Completed</div>
+</div>
+
+
+<div class="card">
+<div class="icon">🚀</div>
+<h2>Deploy</h2>
+<p>Release application to server</p>
+<div class="status">Completed</div>
+</div>
+
+</div>
+
+
+<div class="code">
+
+<h3>Example GitHub Actions YAML</h3>
+
+<pre>
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Run Tests
+      run: npm test
+
+    - name: Deploy
+      run: echo "Deployment Completed"
+</pre>
+
+</div>
+
+
+<button onclick="startWorkflow()">
+Run Workflow
+</button>
+
+<div id="output"></div>
+
+</div>
+
+
+<footer>
+GitHub Actions Workflow Dashboard | HTML + CSS + JavaScript
+</footer>
+
+
+<script>
+
+function startWorkflow(){
+
+let output=document.getElementById("output");
+
+output.innerHTML="⏳ Running GitHub Actions Workflow...";
+
+setTimeout(()=>{
+output.innerHTML="✅ Code Checkout Completed";
+},1000);
+
+setTimeout(()=>{
+output.innerHTML="✅ Build Successful";
+},2000);
+
+setTimeout(()=>{
+output.innerHTML="✅ Tests Passed";
+},3000);
+
+setTimeout(()=>{
+output.innerHTML="🎉 Workflow Completed Successfully!";
+},4000);
+
+}
+
+</script>
+
+
+</body>
+</html>

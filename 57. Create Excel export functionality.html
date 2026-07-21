@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Excel Export</title>
+
+<!-- SheetJS Library -->
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    padding:40px;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+}
+
+.card{
+    background:#fff;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,.1);
+}
+
+h1{
+    color:#2563eb;
+    margin-bottom:20px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+th,td{
+    border:1px solid #ddd;
+    padding:12px;
+    text-align:left;
+}
+
+th{
+    background:#2563eb;
+    color:#fff;
+}
+
+tr:nth-child(even){
+    background:#f8fafc;
+}
+
+button{
+    margin-top:20px;
+    padding:12px 20px;
+    background:#2563eb;
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<h1>Excel Export Demo</h1>
+
+<table id="reportTable">
+
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Department</th>
+<th>Salary</th>
+<th>Status</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>101</td>
+<td>Rahul</td>
+<td>IT</td>
+<td>₹45,000</td>
+<td>Active</td>
+</tr>
+
+<tr>
+<td>102</td>
+<td>John</td>
+<td>HR</td>
+<td>₹38,000</td>
+<td>Active</td>
+</tr>
+
+<tr>
+<td>103</td>
+<td>Emma</td>
+<td>Finance</td>
+<td>₹52,000</td>
+<td>Inactive</td>
+</tr>
+
+<tr>
+<td>104</td>
+<td>David</td>
+<td>Marketing</td>
+<td>₹41,000</td>
+<td>Active</td>
+</tr>
+
+</tbody>
+
+</table>
+
+<button onclick="exportExcel()">
+Export to Excel
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+function exportExcel(){
+
+const table=document.getElementById("reportTable");
+
+const workbook=XLSX.utils.table_to_book(table,{
+sheet:"Employees"
+});
+
+XLSX.writeFile(workbook,"Employee_Report.xlsx");
+
+}
+
+</script>
+
+</body>
+</html>

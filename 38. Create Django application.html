@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Application Overview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            margin: 40px;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #0C4B33;
+        }
+        pre {
+            background: #272822;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+        code {
+            font-family: Consolas, monospace;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+<h1>Django Application Overview</h1>
+
+<p>Django is a high-level Python web framework used to build secure, scalable web applications.</p>
+
+<h2>Project Structure</h2>
+
+<pre><code>
+myproject/
+│
+├── manage.py
+├── myproject/
+│   ├── settings.py
+│   ├── urls.py
+│   ├── wsgi.py
+│   └── asgi.py
+│
+├── myapp/
+│   ├── models.py
+│   ├── views.py
+│   ├── urls.py
+│   ├── admin.py
+│   ├── forms.py
+│   └── templates/
+│       └── index.html
+│
+└── static/
+    ├── css/
+    ├── js/
+    └── images/
+</code></pre>
+
+<h2>Create Project</h2>
+
+<pre><code>
+django-admin startproject myproject
+cd myproject
+python manage.py startapp myapp
+</code></pre>
+
+<h2>Example View (views.py)</h2>
+
+<pre><code>
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("Welcome to Django!")
+</code></pre>
+
+<h2>URL Configuration (urls.py)</h2>
+
+<pre><code>
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.home),
+]
+</code></pre>
+
+<h2>Run the Server</h2>
+
+<pre><code>
+python manage.py runserver
+</code></pre>
+
+<h2>Default URL</h2>
+
+<ul>
+    <li>http://127.0.0.1:8000/</li>
+</ul>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Reusable UI Components</title>
+
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+
+body{
+    background:#f4f6f9;
+    color:#333;
+}
+
+
+/* Container */
+
+.container{
+
+    width:90%;
+    max-width:1100px;
+    margin:40px auto;
+
+}
+
+
+/* Navbar Component */
+
+.navbar{
+
+    background:#2563eb;
+    color:white;
+    padding:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+}
+
+
+.nav-links{
+
+    display:flex;
+    gap:20px;
+
+}
+
+
+.nav-links a{
+
+    color:white;
+    text-decoration:none;
+
+}
+
+
+
+/* Button Components */
+
+.btn{
+
+    padding:12px 22px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:16px;
+
+}
+
+
+.btn-primary{
+
+    background:#2563eb;
+    color:white;
+
+}
+
+
+.btn-success{
+
+    background:#16a34a;
+    color:white;
+
+}
+
+
+.btn-danger{
+
+    background:#dc2626;
+    color:white;
+
+}
+
+
+.btn:hover{
+
+    opacity:.8;
+
+}
+
+
+
+/* Card Component */
+
+
+.card{
+
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+
+}
+
+
+.card-grid{
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+
+}
+
+
+
+/* Alert Components */
+
+
+.alert{
+
+    padding:15px;
+    border-radius:8px;
+    margin:15px 0;
+
+}
+
+
+.alert-success{
+
+    background:#dcfce7;
+    color:#166534;
+
+}
+
+
+.alert-warning{
+
+    background:#fef3c7;
+    color:#92400e;
+
+}
+
+
+.alert-error{
+
+    background:#fee2e2;
+    color:#991b1b;
+
+}
+
+
+
+/* Badge Component */
+
+
+.badge{
+
+    padding:5px 12px;
+    border-radius:20px;
+    background:#2563eb;
+    color:white;
+    font-size:14px;
+
+}
+
+
+
+/* Form Component */
+
+
+.form-group{
+
+    margin-bottom:15px;
+
+}
+
+
+label{
+
+    display:block;
+    margin-bottom:5px;
+    font-weight:bold;
+
+}
+
+
+input{
+
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:6px;
+
+}
+
+
+
+/* Modal Component */
+
+
+.modal{
+
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.5);
+    justify-content:center;
+    align-items:center;
+
+}
+
+
+.modal-box{
+
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    width:300px;
+
+}
+
+
+
+/* Responsive */
+
+
+@media(max-width:700px){
+
+.card-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+
+.navbar{
+
+    flex-direction:column;
+    gap:15px;
+
+}
+
+}
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+
+<!-- Navbar Component -->
+
+<nav class="navbar">
+
+<h2>UI Kit</h2>
+
+<div class="nav-links">
+
+<a href="#">Home</a>
+<a href="#">Components</a>
+<a href="#">Contact</a>
+
+</div>
+
+</nav>
+
+
+
+<div class="container">
+
+
+
+<h1>Reusable UI Components</h1>
+
+
+<br>
+
+
+<!-- Buttons -->
+
+<section class="card">
+
+<h2>Buttons</h2>
+
+<br>
+
+<button class="btn btn-primary">
+Primary
+</button>
+
+
+<button class="btn btn-success">
+Success
+</button>
+
+
+<button class="btn btn-danger">
+Delete
+</button>
+
+
+</section>
+
+
+
+<br>
+
+
+
+<!-- Cards -->
+
+<section>
+
+<h2>Cards</h2>
+
+<br>
+
+
+<div class="card-grid">
+
+
+<div class="card">
+
+<h3>User Profile</h3>
+
+<p>
+Reusable profile card component.
+</p>
+
+<span class="badge">
+Active
+</span>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>Product Card</h3>
+
+<p>
+Reusable ecommerce card design.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>Analytics Card</h3>
+
+<p>
+Dashboard statistics component.
+</p>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+<br>
+
+
+
+<!-- Alerts -->
+
+<section class="card">
+
+
+<h2>Alerts</h2>
+
+
+<div class="alert alert-success">
+
+Success message
+
+</div>
+
+
+<div class="alert alert-warning">
+
+Warning message
+
+</div>
+
+
+<div class="alert alert-error">
+
+Error message
+
+</div>
+
+
+</section>
+
+
+
+<br>
+
+
+
+<!-- Form Component -->
+
+
+<section class="card">
+
+
+<h2>Form Component</h2>
+
+
+<div class="form-group">
+
+<label>
+Username
+</label>
+
+<input type="text" placeholder="Enter username">
+
+</div>
+
+
+<button class="btn btn-primary">
+Submit
+</button>
+
+
+</section>
+
+
+
+<br>
+
+
+<!-- Modal Component -->
+
+<button 
+class="btn btn-primary"
+onclick="openModal()">
+
+Open Modal
+
+</button>
+
+
+
+<div class="modal" id="modal">
+
+
+<div class="modal-box">
+
+<h3>Reusable Modal</h3>
+
+<p>
+This is a popup component.
+</p>
+
+
+<br>
+
+<button 
+class="btn btn-danger"
+onclick="closeModal()">
+
+Close
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+<script>
+
+
+function openModal(){
+
+document.getElementById("modal").style.display="flex";
+
+}
+
+
+function closeModal(){
+
+document.getElementById("modal").style.display="none";
+
+}
+
+
+</script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Internship Portal</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    color:#333;
+}
+
+header{
+    background:#2563eb;
+    color:#fff;
+    padding:20px;
+    text-align:center;
+}
+
+nav{
+    margin-top:10px;
+}
+
+nav a{
+    color:#fff;
+    text-decoration:none;
+    margin:0 15px;
+    font-weight:bold;
+}
+
+.hero{
+    text-align:center;
+    padding:50px 20px;
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+    color:#fff;
+}
+
+.hero h1{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    font-size:18px;
+    margin-bottom:20px;
+}
+
+.hero button{
+    padding:12px 24px;
+    background:#fff;
+    color:#2563eb;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:40px auto;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:30px;
+    color:#2563eb;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:#fff;
+    border-radius:12px;
+    padding:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.card h3{
+    color:#2563eb;
+    margin-bottom:10px;
+}
+
+.card p{
+    margin-bottom:10px;
+}
+
+.card button{
+    background:#2563eb;
+    color:#fff;
+    border:none;
+    padding:10px 15px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+form{
+    background:#fff;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    margin-top:40px;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+textarea{
+    resize:vertical;
+}
+
+.submit-btn{
+    background:#16a34a;
+    color:#fff;
+    border:none;
+    padding:12px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+footer{
+    background:#1e293b;
+    color:#fff;
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+}
+
+@media(max-width:768px){
+.hero h1{
+    font-size:30px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>Internship Portal</h1>
+
+<nav>
+<a href="#">Home</a>
+<a href="#">Internships</a>
+<a href="#">Companies</a>
+<a href="#">Applications</a>
+<a href="#">Contact</a>
+</nav>
+
+</header>
+
+<section class="hero">
+
+<h1>Find Your Dream Internship</h1>
+
+<p>Explore internships from leading companies and apply online.</p>
+
+<button onclick="document.getElementById('apply').scrollIntoView()">
+Apply Now
+</button>
+
+</section>
+
+<div class="container">
+
+<h2 class="section-title">Featured Internships</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Frontend Developer</h3>
+<p><strong>Company:</strong> Tech Solutions</p>
+<p><strong>Duration:</strong> 3 Months</p>
+<p><strong>Location:</strong> Remote</p>
+<button onclick="alert('Application form below.')">
+Apply
+</button>
+</div>
+
+<div class="card">
+<h3>Python Developer</h3>
+<p><strong>Company:</strong> Code Labs</p>
+<p><strong>Duration:</strong> 6 Months</p>
+<p><strong>Location:</strong> Chennai</p>
+<button onclick="alert('Application form below.')">
+Apply
+</button>
+</div>
+
+<div class="card">
+<h3>UI/UX Designer</h3>
+<p><strong>Company:</strong> Creative Studio</p>
+<p><strong>Duration:</strong> 4 Months</p>
+<p><strong>Location:</strong> Bengaluru</p>
+<button onclick="alert('Application form below.')">
+Apply
+</button>
+</div>
+
+</div>
+
+<form id="apply">
+
+<h2 class="section-title">Internship Application</h2>
+
+<input type="text" placeholder="Full Name" required>
+
+<input type="email" placeholder="Email Address" required>
+
+<input type="tel" placeholder="Phone Number" required>
+
+<select required>
+<option>Select Internship</option>
+<option>Frontend Developer</option>
+<option>Python Developer</option>
+<option>UI/UX Designer</option>
+</select>
+
+<textarea rows="5" placeholder="Cover Letter"></textarea>
+
+<input type="file">
+
+<button class="submit-btn" type="submit">
+Submit Application
+</button>
+
+</form>
+
+</div>
+
+<footer>
+
+<p>© 2026 Internship Portal. All Rights Reserved.</p>
+
+</footer>
+
+<script>
+
+document.querySelector("form").addEventListener("submit",function(e){
+
+e.preventDefault();
+
+alert("Your internship application has been submitted successfully!");
+
+this.reset();
+
+});
+
+</script>
+
+</body>
+</html>

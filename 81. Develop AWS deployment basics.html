@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AWS Deployment Basics</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f7fc;
+}
+
+header{
+    background:#232f3e;
+    color:#fff;
+    padding:20px;
+    text-align:center;
+}
+
+.container{
+    max-width:1200px;
+    margin:30px auto;
+    padding:20px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:#fff;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 6px 15px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.icon{
+    font-size:40px;
+    color:#ff9900;
+    margin-bottom:15px;
+}
+
+h2{
+    margin-bottom:10px;
+    color:#232f3e;
+}
+
+p{
+    color:#555;
+    line-height:1.6;
+}
+
+.steps{
+    margin-top:30px;
+    background:#fff;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 6px 15px rgba(0,0,0,.08);
+}
+
+.steps ol{
+    margin-left:20px;
+    line-height:2;
+}
+
+button{
+    margin-top:20px;
+    padding:12px 20px;
+    background:#ff9900;
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#e68900;
+}
+
+#status{
+    margin-top:15px;
+    font-weight:bold;
+    color:#16a34a;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>
+<i class="fab fa-aws"></i>
+AWS Deployment Basics
+</h1>
+
+<p>Learn the basic AWS deployment workflow</p>
+
+</header>
+
+<div class="container">
+
+<div class="grid">
+
+<div class="card">
+<div class="icon">
+<i class="fas fa-server"></i>
+</div>
+<h2>Amazon EC2</h2>
+<p>Launch virtual servers to host your web applications.</p>
+</div>
+
+<div class="card">
+<div class="icon">
+<i class="fas fa-database"></i>
+</div>
+<h2>Amazon RDS</h2>
+<p>Deploy managed MySQL, PostgreSQL, MariaDB, and other databases.</p>
+</div>
+
+<div class="card">
+<div class="icon">
+<i class="fas fa-cloud-upload-alt"></i>
+</div>
+<h2>Amazon S3</h2>
+<p>Store static websites, images, videos, and application files.</p>
+</div>
+
+<div class="card">
+<div class="icon">
+<i class="fas fa-network-wired"></i>
+</div>
+<h2>Elastic Load Balancer</h2>
+<p>Distribute traffic across multiple application servers.</p>
+</div>
+
+<div class="card">
+<div class="icon">
+<i class="fas fa-shield-alt"></i>
+</div>
+<h2>IAM Security</h2>
+<p>Manage users, roles, and permissions securely.</p>
+</div>
+
+<div class="card">
+<div class="icon">
+<i class="fas fa-chart-line"></i>
+</div>
+<h2>CloudWatch</h2>
+<p>Monitor application performance, logs, and metrics.</p>
+</div>
+
+</div>
+
+<div class="steps">
+
+<h2>Basic Deployment Steps</h2>
+
+<ol>
+<li>Create an AWS account.</li>
+<li>Launch an EC2 instance.</li>
+<li>Configure Security Groups (HTTP, HTTPS, SSH).</li>
+<li>Connect using SSH.</li>
+<li>Install a web server (Apache or Nginx).</li>
+<li>Upload your HTML/CSS/JavaScript project.</li>
+<li>Configure a domain and SSL certificate.</li>
+<li>Monitor using CloudWatch.</li>
+</ol>
+
+<button onclick="deployDemo()">
+Simulate Deployment
+</button>
+
+<div id="status"></div>
+
+</div>
+
+</div>
+
+<script>
+
+function deployDemo(){
+
+const status=document.getElementById("status");
+
+status.innerHTML="🚀 Deploying application to AWS...";
+
+setTimeout(function(){
+
+status.innerHTML="✅ Deployment completed successfully!";
+
+},2500);
+
+}
+
+</script>
+
+</body>
+</html>

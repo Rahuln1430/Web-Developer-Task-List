@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Image Slider</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f4f7fb;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    padding:20px;
+}
+
+.slider{
+    position:relative;
+    width:100%;
+    max-width:900px;
+    overflow:hidden;
+    border-radius:16px;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+
+.slides{
+    display:flex;
+    width:300%;
+    animation:slide 12s infinite;
+}
+
+.slide{
+    width:100%;
+    flex-shrink:0;
+}
+
+.slide img{
+    width:100%;
+    height:500px;
+    object-fit:cover;
+    display:block;
+}
+
+/* Caption */
+.caption{
+    position:absolute;
+    bottom:25px;
+    left:30px;
+    color:#fff;
+    background:rgba(0,0,0,.45);
+    padding:12px 18px;
+    border-radius:8px;
+}
+
+/* Dots */
+.dots{
+    position:absolute;
+    bottom:15px;
+    right:25px;
+    display:flex;
+    gap:8px;
+}
+
+.dot{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:rgba(255,255,255,.5);
+}
+
+.dot:first-child{
+    background:#fff;
+}
+
+/* Animation */
+@keyframes slide{
+    0%,25%{
+        transform:translateX(0);
+    }
+    33%,58%{
+        transform:translateX(-100%);
+    }
+    66%,91%{
+        transform:translateX(-200%);
+    }
+    100%{
+        transform:translateX(0);
+    }
+}
+
+/* Responsive */
+@media(max-width:768px){
+
+.slide img{
+    height:300px;
+}
+
+.caption{
+    left:15px;
+    right:15px;
+    bottom:20px;
+    font-size:14px;
+}
+
+}
+</style>
+
+</head>
+<body>
+
+<div class="slider">
+
+<div class="slides">
+
+<div class="slide">
+<img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200" alt="Nature">
+</div>
+
+<div class="slide">
+<img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=1200" alt="Mountains">
+</div>
+
+<div class="slide">
+<img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1200" alt="Lake">
+</div>
+
+</div>
+
+<div class="caption">
+<h2>Beautiful Landscapes</h2>
+<p>Responsive HTML & CSS Image Slider</p>
+</div>
+
+<div class="dots">
+<div class="dot"></div>
+<div class="dot"></div>
+<div class="dot"></div>
+</div>
+
+</div>
+
+</body>
+</html>

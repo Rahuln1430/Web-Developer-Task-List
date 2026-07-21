@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MySQL Database Connection</title>
+    <style>
+        body{
+            font-family:Arial, sans-serif;
+            background:#f4f4f4;
+            margin:40px;
+        }
+        .container{
+            max-width:900px;
+            margin:auto;
+            background:#fff;
+            padding:30px;
+            border-radius:10px;
+            box-shadow:0 5px 15px rgba(0,0,0,.1);
+        }
+        h1{
+            color:#007bff;
+        }
+        pre{
+            background:#272822;
+            color:#f8f8f2;
+            padding:15px;
+            border-radius:8px;
+            overflow:auto;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+<h1>Connect MySQL Database</h1>
+
+<p>HTML cannot directly connect to a MySQL database. A backend server handles the connection.</p>
+
+<h2>Example (PHP)</h2>
+
+<pre><code>
+&lt;?php
+
+$host = "localhost";
+$user = "root";
+$password = "";
+$database = "mydb";
+
+$conn = new mysqli($host, $user, $password, $database);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+echo "Connected successfully";
+
+?&gt;
+</code></pre>
+
+<h2>Database Credentials</h2>
+
+<ul>
+<li>Host: localhost</li>
+<li>Port: 3306</li>
+<li>Username: root</li>
+<li>Password: your_password</li>
+<li>Database: mydb</li>
+</ul>
+
+<h2>Typical Architecture</h2>
+
+<pre>
+Browser (HTML/CSS/JavaScript)
+          │
+          ▼
+Backend (PHP / Node.js / Flask / Django)
+          │
+          ▼
+      MySQL Database
+</pre>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Signup Form</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#4f46e5,#06b6d4);
+    padding:20px;
+}
+
+.signup-container{
+    width:100%;
+    max-width:450px;
+    background:#fff;
+    padding:40px;
+    border-radius:16px;
+    box-shadow:0 15px 35px rgba(0,0,0,.2);
+}
+
+.signup-container h2{
+    text-align:center;
+    color:#1e293b;
+    margin-bottom:10px;
+}
+
+.signup-container p{
+    text-align:center;
+    color:#64748b;
+    margin-bottom:30px;
+}
+
+.input-group{
+    margin-bottom:18px;
+}
+
+.input-group label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:600;
+    color:#334155;
+}
+
+.input-group input{
+    width:100%;
+    padding:14px;
+    border:1px solid #cbd5e1;
+    border-radius:8px;
+    font-size:16px;
+    outline:none;
+    transition:.3s;
+}
+
+.input-group input:focus{
+    border-color:#4f46e5;
+    box-shadow:0 0 0 3px rgba(79,70,229,.15);
+}
+
+.row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.terms{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    margin:20px 0;
+    font-size:14px;
+    color:#475569;
+}
+
+.terms input{
+    margin-top:3px;
+}
+
+.terms a{
+    color:#4f46e5;
+    text-decoration:none;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:8px;
+    background:#4f46e5;
+    color:#fff;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    background:#4338ca;
+}
+
+.login-link{
+    margin-top:20px;
+    text-align:center;
+    color:#64748b;
+}
+
+.login-link a{
+    color:#4f46e5;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+@media(max-width:600px){
+    .row{
+        grid-template-columns:1fr;
+    }
+
+    .signup-container{
+        padding:30px 25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="signup-container">
+
+<h2>Create Account</h2>
+<p>Sign up to get started</p>
+
+<form>
+
+<div class="row">
+
+<div class="input-group">
+<label for="firstName">First Name</label>
+<input type="text" id="firstName" placeholder="John" required>
+</div>
+
+<div class="input-group">
+<label for="lastName">Last Name</label>
+<input type="text" id="lastName" placeholder="Doe" required>
+</div>
+
+</div>
+
+<div class="input-group">
+<label for="email">Email Address</label>
+<input type="email" id="email" placeholder="example@email.com" required>
+</div>
+
+<div class="input-group">
+<label for="password">Password</label>
+<input type="password" id="password" placeholder="Enter password" required>
+</div>
+
+<div class="input-group">
+<label for="confirmPassword">Confirm Password</label>
+<input type="password" id="confirmPassword" placeholder="Confirm password" required>
+</div>
+
+<div class="terms">
+<input type="checkbox" id="agree" required>
+<label for="agree">
+I agree to the <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>.
+</label>
+</div>
+
+<button type="submit">Create Account</button>
+
+</form>
+
+<div class="login-link">
+Already have an account?
+<a href="#">Login</a>
+</div>
+
+</div>
+
+</body>
+</html>

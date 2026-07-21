@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Reusable Backend Modules</title>
+
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f3f6fb;
+    color:#333;
+}
+
+
+/* Header */
+
+header{
+
+    background:#111827;
+    color:white;
+    padding:30px;
+    text-align:center;
+
+}
+
+
+/* Container */
+
+.container{
+
+    width:90%;
+    max-width:1100px;
+    margin:40px auto;
+
+}
+
+
+/* Module Grid */
+
+.modules{
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+
+}
+
+
+.module{
+
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    transition:.3s;
+
+}
+
+
+.module:hover{
+
+    transform:translateY(-5px);
+
+}
+
+
+.module h2{
+
+    color:#2563eb;
+    margin-bottom:10px;
+
+}
+
+
+.status{
+
+    display:inline-block;
+    margin-top:15px;
+    padding:6px 15px;
+    border-radius:20px;
+    background:#dcfce7;
+    color:#166534;
+
+}
+
+
+/* Code Block */
+
+.code{
+
+    margin-top:40px;
+    background:#1e293b;
+    color:#00ff88;
+    padding:20px;
+    border-radius:10px;
+    overflow:auto;
+
+}
+
+
+/* Button */
+
+button{
+
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    margin-top:20px;
+    border-radius:6px;
+    cursor:pointer;
+
+}
+
+
+button:hover{
+
+    background:#1d4ed8;
+
+}
+
+
+/* Responsive */
+
+@media(max-width:800px){
+
+.modules{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+
+<header>
+
+<h1>⚙️ Reusable Backend Modules</h1>
+
+<p>Modular Architecture for Scalable Applications</p>
+
+</header>
+
+
+
+<div class="container">
+
+
+<div class="modules">
+
+
+
+<div class="module">
+
+<h2>🔐 Authentication Module</h2>
+
+<p>
+Reusable login, signup, JWT authentication and session management.
+</p>
+
+<span class="status">
+Active
+</span>
+
+</div>
+
+
+
+<div class="module">
+
+<h2>🌐 API Module</h2>
+
+<p>
+REST API routes, controllers and request handling.
+</p>
+
+<span class="status">
+Active
+</span>
+
+</div>
+
+
+
+
+<div class="module">
+
+<h2>🗄 Database Module</h2>
+
+<p>
+Reusable database connection and CRUD operations.
+</p>
+
+<span class="status">
+Active
+</span>
+
+</div>
+
+
+
+<div class="module">
+
+<h2>🛡 Middleware Module</h2>
+
+<p>
+Security, validation and request processing layers.
+</p>
+
+<span class="status">
+Active
+</span>
+
+</div>
+
+
+
+<div class="module">
+
+<h2>📋 Logging Module</h2>
+
+<p>
+Application logs, error tracking and monitoring.
+</p>
+
+<span class="status">
+Active
+</span>
+
+</div>
+
+
+
+<div class="module">
+
+<h2>📁 File Module</h2>
+
+<p>
+File upload, storage and management services.
+</p>
+
+<span class="status">
+Active
+</span>
+
+</div>
+
+
+
+</div>
+
+
+
+<div class="code">
+
+<h2>Backend Module Structure</h2>
+
+<pre>
+
+backend/
+
+├── modules/
+
+│   ├── auth/
+
+│   │   ├── login.js
+│   │   ├── register.js
+│   │   └── jwt.js
+
+│
+│   ├── database/
+
+│   │   └── connection.js
+
+│
+│   ├── api/
+
+│   │   └── routes.js
+
+│
+│   ├── middleware/
+
+│   │   └── security.js
+
+│
+│   └── logger/
+
+│       └── logger.js
+
+
+app.js
+
+server.js
+
+</pre>
+
+</div>
+
+
+
+<button onclick="loadModules()">
+Load Backend Modules
+</button>
+
+
+<p id="result"></p>
+
+
+</div>
+
+
+
+<script>
+
+function loadModules(){
+
+document.getElementById("result").innerHTML =
+"✅ All reusable backend modules loaded successfully!";
+
+}
+
+</script>
+
+
+
+</body>
+
+</html>

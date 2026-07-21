@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Accessibility Friendly Website</title>
+
+<meta name="description" content="An accessible website following modern accessibility guidelines.">
+
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+
+body{
+
+    background:#f8fafc;
+    color:#222;
+    line-height:1.6;
+
+}
+
+
+/* Skip Navigation */
+
+.skip-link{
+
+    position:absolute;
+    top:-50px;
+    left:10px;
+    background:#000;
+    color:#fff;
+    padding:10px;
+    z-index:100;
+
+}
+
+
+.skip-link:focus{
+
+    top:10px;
+
+}
+
+
+/* Header */
+
+header{
+
+    background:#003366;
+    color:white;
+    padding:30px;
+    text-align:center;
+
+}
+
+
+header h1{
+
+    font-size:32px;
+
+}
+
+
+/* Navigation */
+
+nav{
+
+    background:#222;
+    padding:15px;
+
+}
+
+
+nav ul{
+
+    list-style:none;
+    display:flex;
+    justify-content:center;
+    gap:25px;
+
+}
+
+
+nav a{
+
+    color:white;
+    text-decoration:none;
+    padding:10px;
+
+}
+
+
+nav a:focus,
+button:focus,
+input:focus{
+
+    outline:3px solid #ffcc00;
+
+}
+
+
+
+/* Main */
+
+main{
+
+    width:90%;
+    max-width:1000px;
+    margin:40px auto;
+
+}
+
+
+section{
+
+    background:white;
+    padding:25px;
+    margin-bottom:20px;
+    border-radius:10px;
+
+}
+
+
+/* Cards */
+
+.cards{
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+
+}
+
+
+.card{
+
+    background:#e6f2ff;
+    padding:20px;
+    border-radius:8px;
+
+}
+
+
+/* Form */
+
+form{
+
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+
+}
+
+
+label{
+
+    font-weight:bold;
+
+}
+
+
+input,
+textarea{
+
+    padding:12px;
+    border:2px solid #555;
+    border-radius:5px;
+    font-size:16px;
+
+}
+
+
+button{
+
+    background:#003366;
+    color:white;
+    border:none;
+    padding:14px;
+    border-radius:5px;
+    cursor:pointer;
+    font-size:16px;
+
+}
+
+
+button:hover{
+
+    background:#0055aa;
+
+}
+
+
+/* Footer */
+
+footer{
+
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:20px;
+
+}
+
+
+/* Mobile */
+
+@media(max-width:700px){
+
+nav ul{
+
+    flex-direction:column;
+    text-align:center;
+
+}
+
+
+.cards{
+
+    grid-template-columns:1fr;
+
+}
+
+}
+
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+<a href="#content" class="skip-link">
+Skip to main content
+</a>
+
+
+
+<header role="banner">
+
+<h1>Accessible Web Design</h1>
+
+<p>Designed for Everyone</p>
+
+</header>
+
+
+
+<nav aria-label="Main Navigation">
+
+<ul>
+
+<li>
+<a href="#">Home</a>
+</li>
+
+<li>
+<a href="#">Services</a>
+</li>
+
+<li>
+<a href="#">About</a>
+</li>
+
+<li>
+<a href="#">Contact</a>
+</li>
+
+</ul>
+
+</nav>
+
+
+
+<main id="content">
+
+
+<section>
+
+<h2>Accessibility Features</h2>
+
+<p>
+This website supports screen readers,
+keyboard users, and different devices.
+</p>
+
+
+<div class="cards">
+
+
+<div class="card">
+
+<h3>⌨ Keyboard Support</h3>
+
+<p>
+All elements can be accessed using keyboard navigation.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>🔊 Screen Reader</h3>
+
+<p>
+Semantic HTML improves assistive technology support.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>🎨 High Contrast</h3>
+
+<p>
+Clear colors improve readability.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<section>
+
+<h2>Contact Form</h2>
+
+
+<form aria-label="Contact Form">
+
+
+<label for="name">
+Name
+</label>
+
+
+<input 
+type="text"
+id="name"
+name="name"
+placeholder="Enter your name"
+aria-required="true"
+required>
+
+
+
+<label for="email">
+Email
+</label>
+
+
+<input
+type="email"
+id="email"
+name="email"
+placeholder="Enter email"
+aria-required="true"
+required>
+
+
+
+<label for="message">
+Message
+</label>
+
+
+<textarea
+id="message"
+rows="5"
+aria-label="Message box">
+</textarea>
+
+
+
+<button type="submit">
+Submit
+</button>
+
+
+</form>
+
+</section>
+
+
+</main>
+
+
+
+<footer role="contentinfo">
+
+<p>
+Accessible Website © 2026
+</p>
+
+</footer>
+
+
+
+</body>
+
+</html>

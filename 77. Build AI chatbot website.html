@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Chatbot Website</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f7fc;
+}
+
+header{
+    background:#2563eb;
+    color:#fff;
+    padding:15px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+}
+
+.container{
+    display:flex;
+    height:calc(100vh - 65px);
+}
+
+.sidebar{
+    width:260px;
+    background:#1e293b;
+    color:#fff;
+    padding:20px;
+}
+
+.sidebar h3{
+    margin-bottom:20px;
+}
+
+.sidebar ul{
+    list-style:none;
+}
+
+.sidebar li{
+    padding:12px;
+    border-radius:8px;
+    cursor:pointer;
+    margin-bottom:8px;
+}
+
+.sidebar li:hover{
+    background:#334155;
+}
+
+.chat-area{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    background:#fff;
+}
+
+.messages{
+    flex:1;
+    overflow-y:auto;
+    padding:20px;
+}
+
+.message{
+    max-width:70%;
+    padding:12px 15px;
+    border-radius:12px;
+    margin-bottom:15px;
+}
+
+.bot{
+    background:#e5e7eb;
+}
+
+.user{
+    background:#2563eb;
+    color:#fff;
+    margin-left:auto;
+}
+
+.input-area{
+    display:flex;
+    padding:15px;
+    border-top:1px solid #ddd;
+}
+
+.input-area input{
+    flex:1;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+.input-area button{
+    margin-left:10px;
+    padding:12px 18px;
+    border:none;
+    border-radius:8px;
+    background:#2563eb;
+    color:#fff;
+    cursor:pointer;
+}
+
+.input-area button:hover{
+    background:#1d4ed8;
+}
+
+@media(max-width:768px){
+
+.container{
+    flex-direction:column;
+}
+
+.sidebar{
+    width:100%;
+}
+
+.message{
+    max-width:90%;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">
+<i class="fas fa-robot"></i> AI ChatBot
+</div>
+
+<div>User Dashboard</div>
+</header>
+
+<div class="container">
+
+<div class="sidebar">
+
+<h3>Menu</h3>
+
+<ul>
+<li><i class="fas fa-comments"></i> New Chat</li>
+<li><i class="fas fa-history"></i> Chat History</li>
+<li><i class="fas fa-book"></i> Knowledge Base</li>
+<li><i class="fas fa-cog"></i> Settings</li>
+</ul>
+
+</div>
+
+<div class="chat-area">
+
+<div class="messages" id="messages">
+
+<div class="message bot">
+👋 Hello! I'm your AI assistant. How can I help you today?
+</div>
+
+</div>
+
+<div class="input-area">
+
+<input
+type="text"
+id="userInput"
+placeholder="Type your message...">
+
+<button onclick="sendMessage()">
+Send
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function sendMessage(){
+
+const input=document.getElementById("userInput");
+
+const text=input.value.trim();
+
+if(text==="") return;
+
+const messages=document.getElementById("messages");
+
+const user=document.createElement("div");
+
+user.className="message user";
+
+user.textContent=text;
+
+messages.appendChild(user);
+
+setTimeout(function(){
+
+const bot=document.createElement("div");
+
+bot.className="message bot";
+
+bot.innerHTML=getReply(text);
+
+messages.appendChild(bot);
+
+messages.scrollTop=messages.scrollHeight;
+
+},600);
+
+input.value="";
+
+messages.scrollTop=messages.scrollHeight;
+
+}
+
+function getReply(text){
+
+text=text.toLowerCase();
+
+if(text.includes("hello") || text.includes("hi"))
+return "Hello! 👋 Nice to meet you.";
+
+if(text.includes("html"))
+return "HTML is the standard markup language for creating web pages.";
+
+if(text.includes("css"))
+return "CSS is used to style and design web pages.";
+
+if(text.includes("javascript"))
+return "JavaScript adds interactivity and dynamic features to websites.";
+
+if(text.includes("bye"))
+return "Goodbye! Have a wonderful day. 😊";
+
+return "Thanks for your message! Connect this interface to an AI API like OpenAI, Gemini, or Claude to receive intelligent responses.";
+
+}
+
+</script>
+
+</body>
+</html>

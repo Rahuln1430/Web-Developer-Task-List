@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Responsive Mobile Layout</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    color:#333;
+}
+
+/* Header */
+
+header{
+    background:#2563eb;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+
+header h1{
+    font-size:28px;
+}
+
+
+/* Navigation */
+
+nav{
+    background:#111827;
+    padding:15px;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    justify-content:center;
+    gap:25px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+}
+
+
+/* Hero Section */
+
+.hero{
+    padding:40px 20px;
+    text-align:center;
+}
+
+.hero h2{
+    font-size:32px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    color:#555;
+}
+
+
+/* Cards */
+
+.container{
+    width:90%;
+    margin:auto;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    text-align:center;
+}
+
+.card h3{
+    color:#2563eb;
+    margin-bottom:10px;
+}
+
+
+/* Button */
+
+button{
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:6px;
+    margin-top:20px;
+    cursor:pointer;
+}
+
+
+/* Footer */
+
+footer{
+    margin-top:40px;
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+
+/* Tablet */
+
+@media(max-width:900px){
+
+.cards{
+    grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+
+/* Mobile */
+
+@media(max-width:600px){
+
+header h1{
+    font-size:22px;
+}
+
+nav ul{
+    flex-direction:column;
+    text-align:center;
+    gap:15px;
+}
+
+.hero h2{
+    font-size:24px;
+}
+
+.cards{
+    grid-template-columns:1fr;
+}
+
+.card{
+    padding:20px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<header>
+
+<h1>📱 Responsive Mobile Layout</h1>
+<p>Mobile First Web Design</p>
+
+</header>
+
+
+<nav>
+
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">Services</a></li>
+<li><a href="#">Portfolio</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
+
+</nav>
+
+
+
+<section class="hero">
+
+<h2>Build Responsive Websites</h2>
+
+<p>
+Layouts that adapt perfectly for mobile,
+tablet and desktop devices.
+</p>
+
+<button>
+Explore
+</button>
+
+</section>
+
+
+
+<div class="container">
+
+<div class="cards">
+
+
+<div class="card">
+<h3>📲 Mobile Design</h3>
+<p>
+Optimized layouts for smartphones and small screens.
+</p>
+</div>
+
+
+<div class="card">
+<h3>💻 Desktop Support</h3>
+<p>
+Flexible design for large screen devices.
+</p>
+</div>
+
+
+<div class="card">
+<h3>⚡ Fast UI</h3>
+<p>
+Clean components with responsive performance.
+</p>
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<footer>
+
+<p>
+Responsive Layout © 2026
+</p>
+
+</footer>
+
+
+</body>
+</html>

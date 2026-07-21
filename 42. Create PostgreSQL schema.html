@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PostgreSQL Schema Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            margin: 40px;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #336791;
+        }
+        pre {
+            background: #272822;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+        code {
+            font-family: Consolas, monospace;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>PostgreSQL Schema Example</h1>
+
+    <p>This page shows a sample PostgreSQL schema definition.</p>
+
+    <h2>Create Schema</h2>
+
+<pre><code>
+CREATE SCHEMA company;
+</code></pre>
+
+    <h2>Create Employees Table</h2>
+
+<pre><code>
+CREATE TABLE company.employees (
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    salary NUMERIC(10,2),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+</code></pre>
+
+    <h2>Insert Sample Data</h2>
+
+<pre><code>
+INSERT INTO company.employees
+(first_name, last_name, email, salary)
+VALUES
+('Rahul', 'Kumar', 'rahul@example.com', 50000.00);
+</code></pre>
+
+    <h2>Query Data</h2>
+
+<pre><code>
+SELECT * FROM company.employees;
+</code></pre>
+
+</div>
+
+</body>
+</html>

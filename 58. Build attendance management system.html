@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Attendance Management System</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    padding:30px;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+}
+
+h1{
+    text-align:center;
+    color:#2563eb;
+    margin-bottom:25px;
+}
+
+.card{
+    background:#fff;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,.1);
+}
+
+.controls{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+    margin-bottom:20px;
+}
+
+input,select{
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    width:100%;
+}
+
+button{
+    padding:12px 20px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    color:#fff;
+    font-weight:bold;
+}
+
+.present{
+    background:#16a34a;
+}
+
+.absent{
+    background:#dc2626;
+}
+
+.late{
+    background:#f59e0b;
+}
+
+.save{
+    background:#2563eb;
+}
+
+button:hover{
+    opacity:.9;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+th,td{
+    border:1px solid #ddd;
+    padding:12px;
+    text-align:center;
+}
+
+th{
+    background:#2563eb;
+    color:#fff;
+}
+
+tr:nth-child(even){
+    background:#f9fafb;
+}
+
+.status{
+    font-weight:bold;
+}
+
+.present-text{
+    color:#16a34a;
+}
+
+.absent-text{
+    color:#dc2626;
+}
+
+.late-text{
+    color:#f59e0b;
+}
+
+.summary{
+    display:flex;
+    justify-content:space-around;
+    margin-top:25px;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.box{
+    background:#eef4ff;
+    padding:20px;
+    border-radius:10px;
+    width:180px;
+    text-align:center;
+}
+
+.box h2{
+    color:#2563eb;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Attendance Management System</h1>
+
+<div class="card">
+
+<div class="controls">
+
+<input type="date" id="attendanceDate">
+
+<input type="text" id="studentName" placeholder="Student Name">
+
+<select id="status">
+<option value="Present">Present</option>
+<option value="Absent">Absent</option>
+<option value="Late">Late</option>
+</select>
+
+<button class="save" onclick="addAttendance()">
+Save Attendance
+</button>
+
+</div>
+
+<table id="attendanceTable">
+
+<thead>
+<tr>
+<th>Date</th>
+<th>Student</th>
+<th>Status</th>
+</tr>
+</thead>
+
+<tbody></tbody>
+
+</table>
+
+<div class="summary">
+
+<div class="box">
+<h2 id="presentCount">0</h2>
+<p>Present</p>
+</div>
+
+<div class="box">
+<h2 id="absentCount">0</h2>
+<p>Absent</p>
+</div>
+
+<div class="box">
+<h2 id="lateCount">0</h2>
+<p>Late</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+let present=0;
+let absent=0;
+let late=0;
+
+function addAttendance(){
+
+const date=document.getElementById("attendanceDate").value;
+const student=document.getElementById("studentName").value;
+const status=document.getElementById("status").value;
+
+if(date==="" || student===""){
+alert("Please fill all fields.");
+return;
+}
+
+const tbody=document.querySelector("#attendanceTable tbody");
+
+const row=document.createElement("tr");
+
+let className="";
+
+if(status==="Present"){
+className="present-text";
+present++;
+}
+else if(status==="Absent"){
+className="absent-text";
+absent++;
+}
+else{
+className="late-text";
+late++;
+}
+
+row.innerHTML=`
+<td>${date}</td>
+<td>${student}</td>
+<td class="status ${className}">${status}</td>
+`;
+
+tbody.appendChild(row);
+
+document.getElementById("presentCount").textContent=present;
+document.getElementById("absentCount").textContent=absent;
+document.getElementById("lateCount").textContent=late;
+
+document.getElementById("studentName").value="";
+}
+
+</script>
+
+</body>
+</html>

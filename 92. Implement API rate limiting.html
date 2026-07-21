@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>API Rate Limiting Dashboard</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+
+body{
+    background:#f1f5f9;
+    color:#333;
+}
+
+
+/* Header */
+
+header{
+    background:#1e293b;
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+
+
+/* Container */
+
+.container{
+    width:90%;
+    max-width:1100px;
+    margin:40px auto;
+}
+
+
+/* Cards */
+
+.grid{
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+
+}
+
+
+.card{
+
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+
+}
+
+
+.card h2{
+
+    color:#2563eb;
+    margin-bottom:15px;
+
+}
+
+
+.progress{
+
+    background:#e2e8f0;
+    height:15px;
+    border-radius:10px;
+    overflow:hidden;
+
+}
+
+
+.bar{
+
+    height:100%;
+    width:70%;
+    background:#2563eb;
+
+}
+
+
+.status{
+
+    margin-top:15px;
+    font-weight:bold;
+    color:#16a34a;
+
+}
+
+
+
+/* Endpoint */
+
+.endpoint{
+
+    background:#0f172a;
+    color:#00ff88;
+    padding:15px;
+    border-radius:8px;
+    font-family:monospace;
+}
+
+
+
+/* Security */
+
+.security{
+
+    background:white;
+    margin-top:30px;
+    padding:25px;
+    border-radius:12px;
+
+}
+
+
+.security li{
+
+    margin:10px;
+
+}
+
+
+button{
+
+    margin-top:20px;
+    background:#2563eb;
+    color:white;
+    padding:12px 25px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+
+}
+
+
+button:hover{
+
+    background:#1d4ed8;
+
+}
+
+
+#result{
+
+    margin-top:20px;
+    font-weight:bold;
+
+}
+
+
+
+/* Responsive */
+
+@media(max-width:800px){
+
+.grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<h1>🚦 API Rate Limiting Dashboard</h1>
+
+<p>Monitor and Control API Request Traffic</p>
+
+</header>
+
+
+
+<div class="container">
+
+
+
+<div class="grid">
+
+
+<div class="card">
+
+<h2>Requests</h2>
+
+<h1>750 / 1000</h1>
+
+<p>Requests Used</p>
+
+<br>
+
+<div class="progress">
+
+<div class="bar"></div>
+
+</div>
+
+</div>
+
+
+
+<div class="card">
+
+<h2>Limit Type</h2>
+
+<p>
+Fixed Window
+</p>
+
+<p>
+1000 Requests / Hour
+</p>
+
+<span class="status">
+✔ Active
+</span>
+
+</div>
+
+
+
+<div class="card">
+
+<h2>API Status</h2>
+
+<p class="status">
+● Healthy
+</p>
+
+<p>
+No throttling detected
+</p>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="security">
+
+
+<h2>Rate Limiting Features</h2>
+
+
+<ul>
+
+<li>🚦 Request Per Minute Control</li>
+
+<li>🔑 User Based API Limits</li>
+
+<li>🌐 IP Address Throttling</li>
+
+<li>🛡 DDoS Attack Protection</li>
+
+<li>📊 API Usage Monitoring</li>
+
+<li>⏳ Retry-After Response Headers</li>
+
+</ul>
+
+
+
+
+<h2>API Endpoint Example</h2>
+
+
+<div class="endpoint">
+
+GET /api/products
+
+<br><br>
+
+Rate Limit: 100 requests/minute
+
+<br>
+
+Response: 429 Too Many Requests
+
+</div>
+
+
+
+
+<button onclick="simulateLimit()">
+
+Simulate API Request
+
+</button>
+
+
+<p id="result"></p>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+<script>
+
+
+let requests = 0;
+
+
+function simulateLimit(){
+
+requests++;
+
+
+let result=document.getElementById("result");
+
+
+if(requests < 5){
+
+result.innerHTML =
+"✅ Request Accepted - Remaining Limit: " + (5-requests);
+
+}
+
+else{
+
+result.innerHTML =
+"⚠️ Rate Limit Exceeded - Try Again Later (HTTP 429)";
+
+}
+
+}
+
+
+</script>
+
+
+
+</body>
+
+</html>

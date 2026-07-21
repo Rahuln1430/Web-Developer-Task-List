@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Backend Structure</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fc;
+            margin: 40px;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #0d6efd;
+        }
+        pre {
+            background: #272822;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+        code {
+            font-family: Consolas, monospace;
+        }
+        .folder {
+            background: #eef3ff;
+            padding: 15px;
+            border-left: 5px solid #0d6efd;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Flask Backend Overview</h1>
+
+    <p>Flask is a lightweight Python framework used to build REST APIs and web applications.</p>
+
+    <h2>Project Structure</h2>
+
+    <div class="folder">
+<pre>
+flask-project/
+│
+├── app.py
+├── requirements.txt
+├── templates/
+│   └── index.html
+├── static/
+│   ├── css/
+│   ├── js/
+│   └── images/
+└── database.db
+</pre>
+    </div>
+
+    <h2>Example Flask Backend (app.py)</h2>
+
+<pre><code>
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return "Welcome to Flask Backend"
+
+@app.route("/api/users")
+def users():
+    return {
+        "status":"success",
+        "users":[
+            {"id":1,"name":"Rahul"},
+            {"id":2,"name":"John"}
+        ]
+    }
+
+if __name__ == "__main__":
+    app.run(debug=True)
+</code></pre>
+
+    <h2>Install Flask</h2>
+
+<pre><code>
+pip install flask
+</code></pre>
+
+    <h2>Run Application</h2>
+
+<pre><code>
+python app.py
+</code></pre>
+
+    <h2>Output</h2>
+
+    <ul>
+        <li><strong>Home:</strong> http://127.0.0.1:5000/</li>
+        <li><strong>API:</strong> http://127.0.0.1:5000/api/users</li>
+    </ul>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMS API Integration</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.container{
+    width:400px;
+    background:#fff;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+}
+
+h2{
+    text-align:center;
+    margin-bottom:20px;
+    color:#333;
+}
+
+.input-group{
+    margin-bottom:15px;
+}
+
+label{
+    display:block;
+    margin-bottom:6px;
+    font-weight:bold;
+}
+
+input,
+textarea{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:15px;
+}
+
+textarea{
+    resize:none;
+    height:120px;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    background:#2563eb;
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+#status{
+    margin-top:15px;
+    text-align:center;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Send SMS</h2>
+
+    <div class="input-group">
+        <label>Phone Number</label>
+        <input type="tel" id="phone" placeholder="+911234567890">
+    </div>
+
+    <div class="input-group">
+        <label>Message</label>
+        <textarea id="message" placeholder="Enter your SMS message"></textarea>
+    </div>
+
+    <button onclick="sendSMS()">Send SMS</button>
+
+    <div id="status"></div>
+</div>
+
+<script>
+async function sendSMS(){
+
+    const phone = document.getElementById("phone").value.trim();
+    const message = document.getElementById("message").value.trim();
+    const status = document.getElementById("status");
+
+    if(!phone || !message){
+        status.style.color = "red";
+        status.textContent = "Please fill in all fields.";
+        return;
+    }
+
+    try{
+
+        const response = await fetch("/send-sms", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                phone: phone,
+                message: message
+            })
+        });
+
+        const result = await response.json();
+
+        if(response.ok){
+            status.style.color = "green";
+            status.textContent = result.message || "SMS sent successfully!";
+        }else{
+            status.style.color = "red";
+            status.textContent = result.error || "Failed to send SMS.";
+        }
+
+    }catch(error){
+        status.style.color = "red";
+        status.textContent = "Server connection failed.";
+    }
+}
+</script>
+
+</body>
+</html>

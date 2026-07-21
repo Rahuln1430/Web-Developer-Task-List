@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notification System</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    position:relative;
+}
+
+.notify-btn{
+    padding:12px 25px;
+    border:none;
+    border-radius:8px;
+    background:#2563eb;
+    color:#fff;
+    font-size:16px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.notify-btn:hover{
+    background:#1d4ed8;
+}
+
+.notifications{
+    position:fixed;
+    top:20px;
+    right:20px;
+    width:320px;
+    z-index:1000;
+}
+
+.notification{
+    background:#fff;
+    border-left:5px solid #2563eb;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+    border-radius:10px;
+    padding:15px;
+    margin-bottom:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    animation:slideIn .4s ease;
+}
+
+.notification.success{
+    border-left-color:#22c55e;
+}
+
+.notification.error{
+    border-left-color:#ef4444;
+}
+
+.notification.warning{
+    border-left-color:#f59e0b;
+}
+
+.notification p{
+    color:#333;
+    font-size:15px;
+}
+
+.close{
+    background:none;
+    border:none;
+    font-size:18px;
+    cursor:pointer;
+    color:#666;
+}
+
+.progress{
+    position:absolute;
+    bottom:0;
+    left:0;
+    height:4px;
+    background:#2563eb;
+    animation:progress 5s linear forwards;
+}
+
+.success .progress{
+    background:#22c55e;
+}
+
+.error .progress{
+    background:#ef4444;
+}
+
+.warning .progress{
+    background:#f59e0b;
+}
+
+@keyframes slideIn{
+    from{
+        opacity:0;
+        transform:translateX(100%);
+    }
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+@keyframes progress{
+    from{
+        width:100%;
+    }
+    to{
+        width:0%;
+    }
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+    <button class="notify-btn" onclick="showNotification('success')">
+        Show Notification
+    </button>
+</div>
+
+<div class="notifications" id="notifications"></div>
+
+<script>
+function showNotification(type){
+
+    let message = "";
+
+    switch(type){
+        case "success":
+            message = "✅ Data saved successfully!";
+            break;
+        case "error":
+            message = "❌ Something went wrong!";
+            break;
+        case "warning":
+            message = "⚠ Please check your information.";
+            break;
+        default:
+            message = "New Notification";
+    }
+
+    const notification = document.createElement("div");
+    notification.className = "notification " + type;
+
+    notification.innerHTML = `
+        <p>${message}</p>
+        <button class="close">&times;</button>
+        <div class="progress"></div>
+    `;
+
+    document.getElementById("notifications").appendChild(notification);
+
+    notification.querySelector(".close").onclick = () => {
+        notification.remove();
+    };
+
+    setTimeout(()=>{
+        notification.remove();
+    },5000);
+}
+
+// Demo notifications
+setTimeout(()=>showNotification("success"),1000);
+setTimeout(()=>showNotification("warning"),2500);
+setTimeout(()=>showNotification("error"),4000);
+</script>
+
+</body>
+</html>

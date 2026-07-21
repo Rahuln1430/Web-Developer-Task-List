@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Docker Setup Guide</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    color:#333;
+}
+
+header{
+    background:#0db7ed;
+    color:#fff;
+    text-align:center;
+    padding:30px;
+}
+
+.container{
+    width:90%;
+    max-width:1000px;
+    margin:30px auto;
+}
+
+.card{
+    background:#fff;
+    padding:20px;
+    margin-bottom:20px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+h2{
+    color:#0db7ed;
+    margin-bottom:10px;
+}
+
+code{
+    display:block;
+    background:#272822;
+    color:#00ff88;
+    padding:12px;
+    border-radius:6px;
+    margin-top:10px;
+    overflow:auto;
+}
+
+button{
+    background:#0db7ed;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:5px;
+    cursor:pointer;
+    margin-top:15px;
+    font-size:16px;
+}
+
+button:hover{
+    background:#0984c7;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    background:#222;
+    color:#fff;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+    <h1>Docker Setup Guide</h1>
+    <p>Install, Configure & Run Docker Containers</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+<h2>Step 1 - Install Docker</h2>
+<p>Install Docker using your operating system package manager.</p>
+
+<code>
+# Ubuntu
+
+sudo apt update
+
+sudo apt install docker.io
+</code>
+
+</div>
+
+<div class="card">
+<h2>Step 2 - Start Docker</h2>
+
+<code>
+sudo systemctl start docker
+
+sudo systemctl enable docker
+</code>
+
+</div>
+
+<div class="card">
+<h2>Step 3 - Verify Installation</h2>
+
+<code>
+docker --version
+
+docker run hello-world
+</code>
+
+</div>
+
+<div class="card">
+<h2>Common Docker Commands</h2>
+
+<code>
+docker images
+
+docker ps
+
+docker ps -a
+
+docker pull nginx
+
+docker run -d -p 80:80 nginx
+
+docker stop container_id
+
+docker rm container_id
+</code>
+
+<button onclick="showMessage()">Check Setup</button>
+
+<p id="status"></p>
+
+</div>
+
+</div>
+
+<footer>
+Docker Setup Demo | HTML • CSS • JavaScript
+</footer>
+
+<script>
+function showMessage(){
+    document.getElementById("status").innerHTML =
+    "✅ Docker setup instructions loaded successfully!";
+}
+</script>
+
+</body>
+</html>

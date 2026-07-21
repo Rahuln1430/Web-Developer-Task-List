@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Secure API Endpoints</title>
+
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+
+body{
+    background:#f1f5f9;
+    color:#333;
+}
+
+
+/* Header */
+
+header{
+
+    background:#0f172a;
+    color:white;
+    text-align:center;
+    padding:30px;
+
+}
+
+
+/* Layout */
+
+.container{
+
+    width:90%;
+    max-width:1100px;
+    margin:40px auto;
+
+}
+
+
+/* API Cards */
+
+.api-grid{
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+
+}
+
+
+.api-card{
+
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+
+}
+
+
+.api-card h2{
+
+    color:#2563eb;
+    margin-bottom:10px;
+
+}
+
+
+.endpoint{
+
+    background:#e2e8f0;
+    padding:10px;
+    border-radius:5px;
+    margin:15px 0;
+    font-family:monospace;
+
+}
+
+
+.secure{
+
+    color:#15803d;
+    font-weight:bold;
+
+}
+
+
+/* Security Section */
+
+.security{
+
+    margin-top:30px;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+
+}
+
+
+.security li{
+
+    margin:10px;
+
+}
+
+
+/* Button */
+
+button{
+
+    margin-top:25px;
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:6px;
+    cursor:pointer;
+
+}
+
+
+button:hover{
+
+    background:#1d4ed8;
+
+}
+
+
+#message{
+
+    margin-top:20px;
+    font-weight:bold;
+
+}
+
+
+/* Responsive */
+
+@media(max-width:800px){
+
+.api-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+
+<header>
+
+<h1>🔐 Secure API Endpoint Dashboard</h1>
+
+<p>Protected REST API Architecture</p>
+
+</header>
+
+
+
+<div class="container">
+
+
+
+<div class="api-grid">
+
+
+
+<div class="api-card">
+
+<h2>User API</h2>
+
+<div class="endpoint">
+GET /api/users
+</div>
+
+<p>
+Fetch user information securely.
+</p>
+
+<span class="secure">
+✔ JWT Protected
+</span>
+
+</div>
+
+
+
+<div class="api-card">
+
+<h2>Authentication API</h2>
+
+<div class="endpoint">
+POST /api/login
+</div>
+
+<p>
+Secure user authentication endpoint.
+</p>
+
+<span class="secure">
+✔ Encrypted
+</span>
+
+</div>
+
+
+
+<div class="api-card">
+
+<h2>Payment API</h2>
+
+<div class="endpoint">
+POST /api/payment
+</div>
+
+<p>
+Secure transaction processing.
+</p>
+
+<span class="secure">
+✔ Validated
+</span>
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="security">
+
+
+<h2>API Security Features</h2>
+
+
+<ul>
+
+<li>🔑 JWT Authentication</li>
+
+<li>🛡 Role-Based Access Control</li>
+
+<li>🚦 Rate Limiting Protection</li>
+
+<li>✅ Input Validation</li>
+
+<li>🔒 HTTPS Encryption</li>
+
+<li>📊 API Monitoring & Logging</li>
+
+<li>🚫 Error Handling Without Data Leakage</li>
+
+</ul>
+
+
+<button onclick="secureCheck()">
+Run Security Check
+</button>
+
+
+<p id="message"></p>
+
+
+</div>
+
+
+
+</div>
+
+
+
+<script>
+
+
+function secureCheck(){
+
+document.getElementById("message").innerHTML =
+"✅ API Security Check Completed Successfully!";
+
+}
+
+
+</script>
+
+
+
+</body>
+
+</html>

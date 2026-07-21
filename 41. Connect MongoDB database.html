@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MongoDB Database Connection</title>
+
+<style>
+body{
+    font-family:Arial,sans-serif;
+    background:#f4f4f4;
+    margin:40px;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    background:#fff;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+h1{
+    color:#13AA52;
+}
+
+pre{
+    background:#1e1e1e;
+    color:#f8f8f2;
+    padding:15px;
+    border-radius:8px;
+    overflow:auto;
+}
+
+code{
+    font-family:Consolas,monospace;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>MongoDB Database Connection</h1>
+
+<p>
+HTML cannot directly connect to MongoDB. A backend server manages the database connection.
+</p>
+
+<h2>Example (Node.js + Mongoose)</h2>
+
+<pre><code>
+const mongoose = require("mongoose");
+
+mongoose.connect("mongodb://127.0.0.1:27017/mydatabase")
+.then(() => {
+    console.log("MongoDB Connected");
+})
+.catch(err => {
+    console.log(err);
+});
+</code></pre>
+
+<h2>Connection Details</h2>
+
+<ul>
+<li>Database: mydatabase</li>
+<li>Host: 127.0.0.1</li>
+<li>Port: 27017</li>
+<li>Driver: Mongoose</li>
+</ul>
+
+<h2>Application Architecture</h2>
+
+<pre>
+Browser (HTML/CSS/JavaScript)
+           │
+           ▼
+Backend (Node.js / Express)
+           │
+           ▼
+        MongoDB
+</pre>
+
+<h2>Workflow</h2>
+
+<ol>
+<li>User submits a form from the HTML page.</li>
+<li>JavaScript sends an HTTP request to the backend.</li>
+<li>The backend validates the request.</li>
+<li>The backend reads or writes data in MongoDB.</li>
+<li>The backend returns a JSON response to the browser.</li>
+</ol>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ERP Management System</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f7fb;
+}
+
+.wrapper{
+    display:flex;
+    min-height:100vh;
+}
+
+.sidebar{
+    width:260px;
+    background:#1e293b;
+    color:#fff;
+    padding:20px;
+}
+
+.sidebar h2{
+    margin-bottom:30px;
+}
+
+.sidebar ul{
+    list-style:none;
+}
+
+.sidebar li{
+    padding:14px;
+    border-radius:8px;
+    cursor:pointer;
+    margin-bottom:8px;
+}
+
+.sidebar li:hover{
+    background:#334155;
+}
+
+.sidebar i{
+    margin-right:10px;
+}
+
+.main{
+    flex:1;
+    padding:25px;
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.header input{
+    width:280px;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+.dashboard{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    margin-bottom:30px;
+}
+
+.card{
+    background:#fff;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.card h3{
+    color:#666;
+}
+
+.card h2{
+    margin-top:10px;
+    color:#2563eb;
+}
+
+.table-box{
+    background:#fff;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,td{
+    padding:12px;
+    border-bottom:1px solid #ddd;
+    text-align:left;
+}
+
+th{
+    background:#2563eb;
+    color:#fff;
+}
+
+.status{
+    padding:5px 10px;
+    border-radius:20px;
+    color:#fff;
+    font-size:13px;
+}
+
+.completed{
+    background:#16a34a;
+}
+
+.pending{
+    background:#f59e0b;
+}
+
+.processing{
+    background:#2563eb;
+}
+
+button{
+    padding:8px 14px;
+    border:none;
+    background:#2563eb;
+    color:#fff;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+@media(max-width:768px){
+
+.wrapper{
+    flex-direction:column;
+}
+
+.sidebar{
+    width:100%;
+}
+
+.header{
+    flex-direction:column;
+    gap:15px;
+}
+
+.header input{
+    width:100%;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+<div class="sidebar">
+
+<h2>ERP System</h2>
+
+<ul>
+<li><i class="fas fa-chart-pie"></i>Dashboard</li>
+<li><i class="fas fa-users"></i>Employees</li>
+<li><i class="fas fa-box"></i>Inventory</li>
+<li><i class="fas fa-shopping-cart"></i>Orders</li>
+<li><i class="fas fa-wallet"></i>Finance</li>
+<li><i class="fas fa-truck"></i>Suppliers</li>
+<li><i class="fas fa-file-alt"></i>Reports</li>
+<li><i class="fas fa-cogs"></i>Settings</li>
+</ul>
+
+</div>
+
+<div class="main">
+
+<div class="header">
+
+<h1>Enterprise Resource Planning</h1>
+
+<input
+type="text"
+id="search"
+placeholder="Search orders...">
+
+</div>
+
+<div class="dashboard">
+
+<div class="card">
+<h3>Total Employees</h3>
+<h2>248</h2>
+</div>
+
+<div class="card">
+<h3>Products</h3>
+<h2>1,530</h2>
+</div>
+
+<div class="card">
+<h3>Revenue</h3>
+<h2>$248,900</h2>
+</div>
+
+<div class="card">
+<h3>Orders</h3>
+<h2>820</h2>
+</div>
+
+</div>
+
+<div class="table-box">
+
+<h2>Recent Orders</h2>
+
+<table>
+
+<thead>
+
+<tr>
+<th>Order ID</th>
+<th>Customer</th>
+<th>Department</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+
+</thead>
+
+<tbody id="orderTable">
+
+<tr>
+<td>ORD-1001</td>
+<td>Rahul</td>
+<td>Sales</td>
+<td><span class="status completed">Completed</span></td>
+<td><button>View</button></td>
+</tr>
+
+<tr>
+<td>ORD-1002</td>
+<td>John</td>
+<td>Inventory</td>
+<td><span class="status processing">Processing</span></td>
+<td><button>View</button></td>
+</tr>
+
+<tr>
+<td>ORD-1003</td>
+<td>Emma</td>
+<td>Finance</td>
+<td><span class="status pending">Pending</span></td>
+<td><button>View</button></td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+const search=document.getElementById("search");
+
+search.addEventListener("keyup",function(){
+
+const value=this.value.toLowerCase();
+
+document.querySelectorAll("#orderTable tr")
+.forEach(row=>{
+
+row.style.display=row.innerText
+.toLowerCase()
+.includes(value)
+? ""
+: "none";
+
+});
+
+});
+
+</script>
+
+</body>
+</html>

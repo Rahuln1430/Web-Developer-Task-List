@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REST API Documentation</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f5f7fa;
+    color:#333;
+}
+
+header{
+    background:#0d6efd;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+.container{
+    width:90%;
+    max-width:1100px;
+    margin:30px auto;
+}
+
+.card{
+    background:white;
+    margin-bottom:25px;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,.1);
+}
+
+h2{
+    color:#0d6efd;
+    margin-bottom:10px;
+}
+
+.endpoint{
+    display:inline-block;
+    padding:6px 12px;
+    border-radius:5px;
+    color:white;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.get{background:#28a745;}
+.post{background:#007bff;}
+.put{background:#ffc107;color:#000;}
+.delete{background:#dc3545;}
+
+pre{
+    background:#1e1e1e;
+    color:#f8f8f2;
+    padding:15px;
+    border-radius:8px;
+    overflow:auto;
+    margin-top:10px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+th,td{
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:left;
+}
+
+th{
+    background:#0d6efd;
+    color:white;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+<h1>REST API Documentation</h1>
+<p>Version 1.0</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+<h2>Base URL</h2>
+
+<pre>
+https://api.example.com/v1
+</pre>
+</div>
+
+<div class="card">
+<h2>Authentication</h2>
+
+<p>All protected endpoints require a Bearer Token.</p>
+
+<pre>
+Authorization: Bearer YOUR_ACCESS_TOKEN
+</pre>
+</div>
+
+<div class="card">
+
+<span class="endpoint get">GET</span>
+
+<h2>/users</h2>
+
+<p>Returns all users.</p>
+
+<h3>Response</h3>
+
+<pre>
+[
+  {
+    "id":1,
+    "name":"Rahul",
+    "email":"rahul@example.com"
+  }
+]
+</pre>
+
+</div>
+
+<div class="card">
+
+<span class="endpoint post">POST</span>
+
+<h2>/users</h2>
+
+<p>Create a new user.</p>
+
+<h3>Request Body</h3>
+
+<pre>
+{
+  "name":"John",
+  "email":"john@example.com"
+}
+</pre>
+
+<h3>Response</h3>
+
+<pre>
+{
+  "message":"User created successfully"
+}
+</pre>
+
+</div>
+
+<div class="card">
+
+<span class="endpoint put">PUT</span>
+
+<h2>/users/{id}</h2>
+
+<p>Update an existing user.</p>
+
+</div>
+
+<div class="card">
+
+<span class="endpoint delete">DELETE</span>
+
+<h2>/users/{id}</h2>
+
+<p>Delete a user.</p>
+
+</div>
+
+<div class="card">
+
+<h2>Status Codes</h2>
+
+<table>
+
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+
+<tr>
+<td>200</td>
+<td>Success</td>
+</tr>
+
+<tr>
+<td>201</td>
+<td>Created</td>
+</tr>
+
+<tr>
+<td>400</td>
+<td>Bad Request</td>
+</tr>
+
+<tr>
+<td>401</td>
+<td>Unauthorized</td>
+</tr>
+
+<tr>
+<td>404</td>
+<td>Not Found</td>
+</tr>
+
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+</body>
+</html>

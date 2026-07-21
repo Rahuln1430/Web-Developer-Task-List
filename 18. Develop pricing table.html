@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Pricing Table</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f4f7fb;
+}
+
+.pricing{
+    padding:80px 20px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+}
+
+.heading{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.heading h2{
+    font-size:38px;
+    color:#1e293b;
+    margin-bottom:10px;
+}
+
+.heading p{
+    color:#64748b;
+}
+
+.pricing-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:#fff;
+    border-radius:18px;
+    padding:35px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.featured{
+    border:3px solid #2563eb;
+    transform:scale(1.03);
+}
+
+.plan{
+    font-size:24px;
+    color:#1e293b;
+    margin-bottom:15px;
+}
+
+.price{
+    font-size:48px;
+    color:#2563eb;
+    font-weight:bold;
+    margin-bottom:5px;
+}
+
+.duration{
+    color:#64748b;
+    margin-bottom:25px;
+}
+
+.features{
+    list-style:none;
+    margin-bottom:30px;
+}
+
+.features li{
+    padding:10px 0;
+    border-bottom:1px solid #eee;
+    color:#475569;
+}
+
+.btn{
+    display:inline-block;
+    padding:14px 28px;
+    background:#2563eb;
+    color:#fff;
+    text-decoration:none;
+    border-radius:8px;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#1d4ed8;
+}
+
+.badge{
+    display:inline-block;
+    margin-bottom:18px;
+    background:#2563eb;
+    color:#fff;
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+@media(max-width:768px){
+
+.heading h2{
+    font-size:30px;
+}
+
+.pricing{
+    padding:60px 15px;
+}
+
+.featured{
+    transform:none;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<section class="pricing">
+
+<div class="container">
+
+<div class="heading">
+<h2>Choose Your Plan</h2>
+<p>Simple pricing for individuals and businesses.</p>
+</div>
+
+<div class="pricing-grid">
+
+<div class="card">
+
+<h3 class="plan">Basic</h3>
+
+<div class="price">$19</div>
+<div class="duration">per month</div>
+
+<ul class="features">
+<li>✔ 5 Projects</li>
+<li>✔ 10 GB Storage</li>
+<li>✔ Email Support</li>
+<li>✔ Community Access</li>
+</ul>
+
+<a href="#" class="btn">Get Started</a>
+
+</div>
+
+<div class="card featured">
+
+<div class="badge">Most Popular</div>
+
+<h3 class="plan">Professional</h3>
+
+<div class="price">$49</div>
+<div class="duration">per month</div>
+
+<ul class="features">
+<li>✔ Unlimited Projects</li>
+<li>✔ 100 GB Storage</li>
+<li>✔ Priority Support</li>
+<li>✔ Advanced Analytics</li>
+<li>✔ API Access</li>
+</ul>
+
+<a href="#" class="btn">Choose Plan</a>
+
+</div>
+
+<div class="card">
+
+<h3 class="plan">Enterprise</h3>
+
+<div class="price">$99</div>
+<div class="duration">per month</div>
+
+<ul class="features">
+<li>✔ Unlimited Everything</li>
+<li>✔ Dedicated Manager</li>
+<li>✔ Premium Security</li>
+<li>✔ 24/7 Support</li>
+<li>✔ Custom Integrations</li>
+</ul>
+
+<a href="#" class="btn">Contact Sales</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node.js Backend Overview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f9;
+            margin: 40px;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #28a745;
+        }
+        pre {
+            background: #1e1e1e;
+            color: #dcdcdc;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+        code {
+            font-family: Consolas, monospace;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Node.js Backend Overview</h1>
+
+    <p>Node.js is a JavaScript runtime used to build fast and scalable server-side applications.</p>
+
+    <h2>Project Structure</h2>
+
+<pre><code>
+node-backend/
+│
+├── server.js
+├── package.json
+├── routes/
+│   └── users.js
+├── controllers/
+├── models/
+├── middleware/
+└── public/
+</code></pre>
+
+    <h2>Example Express Server (server.js)</h2>
+
+<pre><code>
+const express = require('express');
+
+const app = express();
+
+app.use(express.json());
+
+app.get('/', (req, res) => {
+    res.send('Welcome to Node.js Backend');
+});
+
+app.get('/api/users', (req, res) => {
+    res.json([
+        { id: 1, name: 'Rahul' },
+        { id: 2, name: 'John' }
+    ]);
+});
+
+const PORT = 3000;
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
+</code></pre>
+
+    <h2>Install Dependencies</h2>
+
+<pre><code>
+npm install express
+</code></pre>
+
+    <h2>Run the Server</h2>
+
+<pre><code>
+node server.js
+</code></pre>
+
+    <h2>Available Endpoints</h2>
+
+    <ul>
+        <li><strong>GET /</strong> – Welcome message</li>
+        <li><strong>GET /api/users</strong> – Returns a list of users</li>
+    </ul>
+
+</div>
+
+</body>
+</html>

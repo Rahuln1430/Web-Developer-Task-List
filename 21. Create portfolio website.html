@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Website</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#f8fafc;
+    color:#1e293b;
+    line-height:1.6;
+}
+
+/* Header */
+header{
+    background:#0f172a;
+    color:#fff;
+    padding:18px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    color:#38bdf8;
+}
+
+nav a{
+    color:#fff;
+    text-decoration:none;
+    margin-left:20px;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#38bdf8;
+}
+
+/* Hero */
+.hero{
+    min-height:90vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:40px 20px;
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    color:#fff;
+}
+
+.hero h1{
+    font-size:52px;
+}
+
+.hero p{
+    max-width:650px;
+    margin:20px auto;
+}
+
+.btn{
+    display:inline-block;
+    padding:14px 28px;
+    background:#fff;
+    color:#2563eb;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+/* Sections */
+section{
+    padding:80px 8%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.section-title h2{
+    font-size:36px;
+}
+
+/* About */
+.about{
+    max-width:900px;
+    margin:auto;
+    text-align:center;
+}
+
+/* Skills */
+.skills{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:20px;
+}
+
+.skill{
+    background:#fff;
+    padding:25px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+/* Projects */
+.projects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.project{
+    background:#fff;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.project img{
+    width:100%;
+    display:block;
+}
+
+.project-content{
+    padding:20px;
+}
+
+/* Contact */
+.contact{
+    max-width:700px;
+    margin:auto;
+}
+
+.contact input,
+.contact textarea{
+    width:100%;
+    padding:12px;
+    margin-bottom:15px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+.contact button{
+    width:100%;
+    padding:14px;
+    background:#2563eb;
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+/* Footer */
+footer{
+    background:#0f172a;
+    color:#fff;
+    text-align:center;
+    padding:20px;
+}
+
+@media(max-width:768px){
+
+header{
+    flex-direction:column;
+    gap:15px;
+}
+
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.hero h1{
+    font-size:38px;
+}
+
+.section-title h2{
+    font-size:30px;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">MyPortfolio</div>
+
+<nav>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+
+<section class="hero">
+<div>
+<h1>Hello, I'm John Doe</h1>
+<p>
+A passionate Web Developer creating responsive, modern,
+and user-friendly websites.
+</p>
+<a href="#projects" class="btn">View Projects</a>
+</div>
+</section>
+
+<section id="about">
+<div class="section-title">
+<h2>About Me</h2>
+</div>
+
+<div class="about">
+<p>
+I specialize in HTML, CSS, JavaScript, and responsive web design.
+I enjoy building clean interfaces and delivering excellent user experiences.
+</p>
+</div>
+</section>
+
+<section id="skills">
+
+<div class="section-title">
+<h2>Skills</h2>
+</div>
+
+<div class="skills">
+<div class="skill">HTML5</div>
+<div class="skill">CSS3</div>
+<div class="skill">JavaScript</div>
+<div class="skill">Responsive Design</div>
+<div class="skill">UI/UX</div>
+<div class="skill">Git</div>
+</div>
+
+</section>
+
+<section id="projects">
+
+<div class="section-title">
+<h2>Projects</h2>
+</div>
+
+<div class="projects">
+
+<div class="project">
+<img src="https://picsum.photos/500/300?1" alt="Project 1">
+<div class="project-content">
+<h3>E-Commerce Website</h3>
+<p>Responsive online shopping platform.</p>
+</div>
+</div>
+
+<div class="project">
+<img src="https://picsum.photos/500/300?2" alt="Project 2">
+<div class="project-content">
+<h3>Dashboard UI</h3>
+<p>Modern analytics dashboard interface.</p>
+</div>
+</div>
+
+<div class="project">
+<img src="https://picsum.photos/500/300?3" alt="Project 3">
+<div class="project-content">
+<h3>Portfolio Website</h3>
+<p>Creative personal portfolio design.</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<div class="section-title">
+<h2>Contact Me</h2>
+</div>
+
+<form class="contact">
+<input type="text" placeholder="Your Name" required>
+<input type="email" placeholder="Your Email" required>
+<textarea rows="5" placeholder="Your Message" required></textarea>
+<button type="submit">Send Message</button>
+</form>
+
+</section>
+
+<footer>
+<p>&copy; 2026 MyPortfolio. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

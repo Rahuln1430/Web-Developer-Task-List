@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google Maps Integration</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f5f7fa;
+}
+
+header{
+    background:#2563eb;
+    color:#fff;
+    padding:18px;
+    text-align:center;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:30px auto;
+}
+
+.controls{
+    display:flex;
+    gap:10px;
+    margin-bottom:20px;
+    flex-wrap:wrap;
+}
+
+input{
+    flex:1;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+button{
+    padding:12px 20px;
+    background:#2563eb;
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+#map{
+    width:100%;
+    height:500px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+</style>
+
+</head>
+<body>
+
+<header>
+<h1>Google Maps Integration Demo</h1>
+</header>
+
+<div class="container">
+
+<div class="controls">
+
+<input
+type="text"
+id="address"
+placeholder="Enter a location">
+
+<button onclick="searchLocation()">
+Search
+</button>
+
+<button onclick="getCurrentLocation()">
+Current Location
+</button>
+
+</div>
+
+<div id="map"></div>
+
+</div>
+
+<script>
+
+let map;
+let marker;
+let geocoder;
+
+function initMap(){
+
+const india={
+lat:20.5937,
+lng:78.9629
+};
+
+map=new google.maps.Map(document.getElementById("map"),{
+zoom:5,
+center:india
+});
+
+marker=new google.maps.Marker({
+position:india,
+map:map
+});
+
+geocoder=new google.maps.Geocoder();
+
+}
+
+function searchLocation(){
+
+const address=document.getElementById("address").value;
+
+if(address===""){
+alert("Enter a location.");
+return;
+}
+
+geocoder.geocode({address:address},function(results,status){
+
+if(status==="OK"){
+
+map.setCenter(results[0].geometry.location);
+
+map.setZoom(15);
+
+marker.setPosition(results[0].geometry.location);
+
+}else{
+
+alert("Location not found.");
+
+}
+
+});
+
+}
+
+function getCurrentLocation(){
+
+if(navigator.geolocation){
+
+navigator.geolocation.getCurrentPosition(function(position){
+
+const location={
+lat:position.coords.latitude,
+lng:position.coords.longitude
+};
+
+map.setCenter(location);
+
+map.setZoom(15);
+
+marker.setPosition(location);
+
+});
+
+}else{
+
+alert("Geolocation is not supported.");
+
+}
+
+}
+
+</script>
+
+<script async
+src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap">
+</script>
+
+</body>
+</html>

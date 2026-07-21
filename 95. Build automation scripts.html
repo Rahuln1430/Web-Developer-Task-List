@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Automation Scripts Dashboard</title>
+
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+
+body{
+
+    background:#f1f5f9;
+    color:#333;
+
+}
+
+
+/* Header */
+
+header{
+
+    background:#111827;
+    color:white;
+    padding:30px;
+    text-align:center;
+
+}
+
+
+/* Container */
+
+.container{
+
+    width:90%;
+    max-width:1100px;
+    margin:40px auto;
+
+}
+
+
+/* Cards */
+
+.grid{
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+
+}
+
+
+.card{
+
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+
+}
+
+
+.card h2{
+
+    color:#2563eb;
+    margin-bottom:15px;
+
+}
+
+
+.status{
+
+    display:inline-block;
+    padding:7px 15px;
+    border-radius:20px;
+    background:#dcfce7;
+    color:#166534;
+    margin-top:15px;
+    font-weight:bold;
+
+}
+
+
+/* Script Box */
+
+.script{
+
+    background:#0f172a;
+    color:#00ff88;
+    padding:20px;
+    border-radius:10px;
+    font-family:monospace;
+    overflow:auto;
+
+}
+
+
+/* Button */
+
+button{
+
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:6px;
+    cursor:pointer;
+    margin-top:20px;
+
+}
+
+
+button:hover{
+
+    background:#1d4ed8;
+
+}
+
+
+#output{
+
+    margin-top:20px;
+    font-weight:bold;
+
+}
+
+
+
+/* Responsive */
+
+@media(max-width:800px){
+
+.grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+
+<header>
+
+<h1>⚙️ Automation Scripts Dashboard</h1>
+
+<p>Automate Tasks, Workflows and Deployments</p>
+
+</header>
+
+
+
+<div class="container">
+
+
+
+<div class="grid">
+
+
+
+<div class="card">
+
+<h2>🚀 Deployment Script</h2>
+
+<p>
+Automates application deployment process.
+</p>
+
+<span class="status">
+Running
+</span>
+
+</div>
+
+
+
+
+<div class="card">
+
+<h2>📂 Backup Script</h2>
+
+<p>
+Automatically creates database backups.
+</p>
+
+<span class="status">
+Scheduled
+</span>
+
+</div>
+
+
+
+
+<div class="card">
+
+<h2>📊 Report Generator</h2>
+
+<p>
+Creates automated analytics reports.
+</p>
+
+<span class="status">
+Completed
+</span>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<div class="card" style="margin-top:30px;">
+
+
+<h2>Automation Script Example</h2>
+
+
+<div class="script">
+
+<pre>
+
+#!/bin/bash
+
+echo "Starting Automation"
+
+git pull
+
+npm install
+
+npm run build
+
+echo "Deployment Completed"
+
+</pre>
+
+</div>
+
+
+
+<button onclick="runScript()">
+
+Execute Script
+
+</button>
+
+
+<p id="output"></p>
+
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+
+<h2>Automation Workflow</h2>
+
+
+<ul>
+
+<li>1️⃣ Trigger Event</li>
+
+<li>2️⃣ Execute Script</li>
+
+<li>3️⃣ Process Data</li>
+
+<li>4️⃣ Generate Output</li>
+
+<li>5️⃣ Send Notification</li>
+
+</ul>
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+<script>
+
+
+function runScript(){
+
+let output=document.getElementById("output");
+
+
+output.innerHTML="⏳ Running Automation Script...";
+
+
+setTimeout(()=>{
+
+output.innerHTML="✅ Script Executed Successfully!";
+
+},2000);
+
+
+}
+
+
+</script>
+
+
+
+</body>
+
+</html>

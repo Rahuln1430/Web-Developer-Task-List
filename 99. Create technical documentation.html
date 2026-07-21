@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Technical Documentation</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    display:flex;
+    background:#f4f6f9;
+    color:#333;
+}
+
+/* Sidebar */
+
+.sidebar{
+    width:260px;
+    background:#1f2937;
+    color:white;
+    min-height:100vh;
+    padding:20px;
+    position:fixed;
+}
+
+.sidebar h2{
+    margin-bottom:20px;
+}
+
+.sidebar input{
+    width:100%;
+    padding:10px;
+    border:none;
+    border-radius:5px;
+    margin-bottom:20px;
+}
+
+.sidebar ul{
+    list-style:none;
+}
+
+.sidebar li{
+    margin:12px 0;
+}
+
+.sidebar a{
+    color:white;
+    text-decoration:none;
+}
+
+.sidebar a:hover{
+    color:#38bdf8;
+}
+
+/* Main */
+
+.main{
+    margin-left:280px;
+    padding:40px;
+    width:100%;
+}
+
+section{
+    background:white;
+    margin-bottom:25px;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+h1,h2{
+    color:#2563eb;
+}
+
+pre{
+    background:#111827;
+    color:#22c55e;
+    padding:15px;
+    border-radius:6px;
+    overflow:auto;
+    margin-top:10px;
+}
+
+code{
+    font-family:Consolas,monospace;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+th,td{
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:left;
+}
+
+th{
+    background:#2563eb;
+    color:white;
+}
+
+@media(max-width:768px){
+
+body{
+    display:block;
+}
+
+.sidebar{
+    position:relative;
+    width:100%;
+    min-height:auto;
+}
+
+.main{
+    margin-left:0;
+    padding:20px;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+
+<h2>Documentation</h2>
+
+<input
+type="text"
+id="search"
+placeholder="Search..."
+onkeyup="searchDocs()">
+
+<ul id="menu">
+
+<li><a href="#intro">Introduction</a></li>
+<li><a href="#install">Installation</a></li>
+<li><a href="#usage">Usage</a></li>
+<li><a href="#api">API Reference</a></li>
+<li><a href="#examples">Examples</a></li>
+<li><a href="#faq">FAQ</a></li>
+
+</ul>
+
+</div>
+
+<div class="main">
+
+<section id="intro">
+<h1>Technical Documentation</h1>
+<p>
+Welcome to the project documentation. This guide explains setup,
+configuration, usage, and API integration.
+</p>
+</section>
+
+<section id="install">
+<h2>Installation</h2>
+
+<pre><code>git clone https://github.com/example/project
+
+cd project
+
+npm install
+
+npm start
+</code></pre>
+
+</section>
+
+<section id="usage">
+
+<h2>Usage</h2>
+
+<p>
+Run the application locally and access it from your browser.
+Configure environment variables before deployment.
+</p>
+
+</section>
+
+<section id="api">
+
+<h2>API Reference</h2>
+
+<table>
+
+<tr>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+
+<tr>
+<td>GET</td>
+<td>/api/users</td>
+<td>Retrieve all users</td>
+</tr>
+
+<tr>
+<td>POST</td>
+<td>/api/login</td>
+<td>User authentication</td>
+</tr>
+
+<tr>
+<td>PUT</td>
+<td>/api/profile</td>
+<td>Update profile</td>
+</tr>
+
+<tr>
+<td>DELETE</td>
+<td>/api/users/{id}</td>
+<td>Delete a user</td>
+</tr>
+
+</table>
+
+</section>
+
+<section id="examples">
+
+<h2>Code Example</h2>
+
+<pre><code>fetch("/api/users")
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error(error));
+</code></pre>
+
+</section>
+
+<section id="faq">
+
+<h2>Frequently Asked Questions</h2>
+
+<p><strong>Q:</strong> Is authentication required?</p>
+<p><strong>A:</strong> Yes, secure endpoints require a valid access token.</p>
+
+<br>
+
+<p><strong>Q:</strong> Is the application responsive?</p>
+<p><strong>A:</strong> Yes, it supports desktop, tablet, and mobile devices.</p>
+
+</section>
+
+</div>
+
+<script>
+function searchDocs(){
+
+let input=document.getElementById("search").value.toLowerCase();
+
+let items=document.querySelectorAll("#menu li");
+
+items.forEach(item=>{
+
+let text=item.textContent.toLowerCase();
+
+item.style.display=text.includes(input)?"block":"none";
+
+});
+
+}
+</script>
+
+</body>
+</html>

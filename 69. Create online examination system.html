@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Examination System</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f7fb;
+    color:#333;
+}
+
+.container{
+    max-width:900px;
+    margin:40px auto;
+    background:#fff;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+h1{
+    text-align:center;
+    color:#2563eb;
+    margin-bottom:20px;
+}
+
+.info{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    margin-bottom:25px;
+    font-weight:bold;
+}
+
+.timer{
+    color:#dc2626;
+}
+
+.question{
+    margin-bottom:25px;
+}
+
+.question h3{
+    margin-bottom:12px;
+}
+
+.option{
+    margin:10px 0;
+}
+
+button{
+    padding:12px 24px;
+    background:#2563eb;
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+.result{
+    display:none;
+    margin-top:30px;
+    padding:20px;
+    background:#eef6ff;
+    border-radius:10px;
+    text-align:center;
+}
+
+@media(max-width:600px){
+.info{
+    flex-direction:column;
+    gap:10px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Online Examination</h1>
+
+<div class="info">
+<div>Candidate: Student</div>
+<div class="timer">Time Left: <span id="time">60</span>s</div>
+</div>
+
+<form id="examForm">
+
+<div class="question">
+<h3>1. Which language is used to style web pages?</h3>
+
+<div class="option">
+<input type="radio" name="q1" value="0"> HTML
+</div>
+
+<div class="option">
+<input type="radio" name="q1" value="1"> CSS
+</div>
+
+<div class="option">
+<input type="radio" name="q1" value="0"> Python
+</div>
+
+<div class="option">
+<input type="radio" name="q1" value="0"> SQL
+</div>
+</div>
+
+<div class="question">
+<h3>2. Which language runs in the browser?</h3>
+
+<div class="option">
+<input type="radio" name="q2" value="1"> JavaScript
+</div>
+
+<div class="option">
+<input type="radio" name="q2" value="0"> Java
+</div>
+
+<div class="option">
+<input type="radio" name="q2" value="0"> C++
+</div>
+
+<div class="option">
+<input type="radio" name="q2" value="0"> Python
+</div>
+</div>
+
+<div class="question">
+<h3>3. Which HTML tag creates a hyperlink?</h3>
+
+<div class="option">
+<input type="radio" name="q3" value="1"> &lt;a&gt;
+</div>
+
+<div class="option">
+<input type="radio" name="q3" value="0"> &lt;img&gt;
+</div>
+
+<div class="option">
+<input type="radio" name="q3" value="0"> &lt;table&gt;
+</div>
+
+<div class="option">
+<input type="radio" name="q3" value="0"> &lt;div&gt;
+</div>
+</div>
+
+<button type="button" onclick="submitExam()">
+Submit Exam
+</button>
+
+</form>
+
+<div class="result" id="result">
+<h2>Exam Completed</h2>
+<p>Your Score: <span id="score"></span> / 3</p>
+</div>
+
+</div>
+
+<script>
+
+let time=60;
+
+const timer=setInterval(function(){
+
+time--;
+
+document.getElementById("time").textContent=time;
+
+if(time<=0){
+
+clearInterval(timer);
+
+submitExam();
+
+}
+
+},1000);
+
+function submitExam(){
+
+clearInterval(timer);
+
+let score=0;
+
+const answers=document.querySelectorAll("input[type=radio]:checked");
+
+answers.forEach(answer=>{
+
+score+=Number(answer.value);
+
+});
+
+document.getElementById("score").textContent=score;
+
+document.getElementById("result").style.display="block";
+
+document.getElementById("examForm").style.display="none";
+
+}
+
+</script>
+
+</body>
+</html>
